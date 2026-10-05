@@ -1,0 +1,16 @@
+schema_version: 1
+source_of_record: Zenodo
+audited: 2026-10-05
+record:
+  id: Validator
+  version: v1.1
+  doi: 10.5281/zenodo.21833853
+  published: 2026-08-09
+  license: CC-BY-4.0
+  files:
+    - {name: "2026-08-09_Validator_v1.1_SHA256-77dcba8bb08c9cfb924e6d55cb9d89ee2a57d2d2c3df853efda2bdf508aab341.zip", size: "3.1 MB", md5: "f51f52361acbb683d7aa9fb259a6e91d"}
+    - {name: "2026-08-09_Validator_v1.1_SHA256-77dcba8bb08c9cfb924e6d55cb9d89ee2a57d2d2c3df853efda2bdf508aab341_ptc_frs01.zip", size: "3.2 MB", md5: "7b15f80415f81e34b0e501a931a9a8ae"}
+    - {name: "CHANGELOG.md", size: "4.1 kB", md5: "4b96c68e0db0a02b9ec0ceb5c0713dbf"}
+    - {name: "README.md", size: "1.7 kB", md5: "3c2ee4c4403895a74c8c51c16015d2d4"}
+    - {name: "ro-crate-metadata.json", size: "6.6 kB", md5: "6448a2686d10b6003ef99f7c8af73c1f"}
+    - {name: "SHA256SUMS.txt", size: "590 Bytes", md5: "efb405eb11ae4d4bfe601efd8dc944ac"}
