@@ -2,6 +2,8 @@
 
 Public technical repository for **Validator**, the reference implementation of the **PTC / CTP — Canal Transparency Protocol**, developed within **El Canal — Applied Cognitive Symbology (ACS)**.
 
+**Try it:** [Quick start](QUICKSTART.md) · [validator.es](https://validator.es) · [El Canal GitHub map](https://github.com/ulaulaygpt)
+
 ## Current public reference version
 
 **Validator v1.1 — Reference Implementation of the Canal Transparency Protocol (PTC/CTP)**  
@@ -39,3 +41,7 @@ Project: **El Canal — Applied Cognitive Symbology (ACS)**
 Website: https://elcanal.es
 
 > El Canal propone. El humano decide.
+
+## Public example
+
+The [CAP v0.3 GitHub release](https://github.com/ulaulaygpt/elcanal-cap/releases/tag/v0.3) is a concrete public example of the publication pattern: the source ZIP is published together with its canonical PTC package.
