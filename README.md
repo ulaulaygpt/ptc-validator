@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/brand/validator-banner.png" alt="Validator — Reference Implementation of PTC/CTP" width="100%">
+</p>
+
 # Validator — Reference Implementation of PTC/CTP
 
 Public technical repository for **Validator**, the reference implementation of the **PTC / CTP — Canal Transparency Protocol**, developed within **El Canal — Applied Cognitive Symbology (ACS)**.
