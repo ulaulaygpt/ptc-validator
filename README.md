@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="assets/validator-banner.jpg" alt="PTC Validator — Reference Implementation" width="100%">
+</p>
+
+<p align="center">
   <img src="assets/brand/validator-banner.png" alt="Validator — Reference Implementation of PTC/CTP" width="100%">
 </p>
 
