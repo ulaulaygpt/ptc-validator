@@ -17,6 +17,14 @@ Validator v1.1 implements the current PTC/CTP normative stack, including:
 - PKG-02
 - DCL-03
 
+## Readable source mirror
+
+The repository now exposes the public **Validator v1.1** source under `source/v1.1/`, synchronized from the exact canonical Zenodo package after SHA-256 verification.
+
+Canonical package SHA-256: `77dcba8bb08c9cfb924e6d55cb9d89ee2a57d2d2c3df853efda2bdf508aab341`
+
+The GitHub mirror intentionally includes text/source assets that can be inspected and diffed directly. Binary packaged downloads, PNG/ICO assets and font files remain in the canonical Zenodo artefact. See `source/v1.1/SOURCE.yml` for scope and provenance.
+
 ## Repository policy
 
 Zenodo remains the archival and citation authority for released versions. This repository is the engineering surface for readable source, tests, fixtures, implementation notes, release history and reproducibility.
