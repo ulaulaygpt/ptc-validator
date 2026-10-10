@@ -1,0 +1,73 @@
+name: Sync Validator v1.1 readable source from Zenodo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/sync-validator-v1.1.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download canonical Validator v1.1 package
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="https://zenodo.org/records/21833853/files/2026-08-09_Validator_v1.1_SHA256-77dcba8bb08c9cfb924e6d55cb9d89ee2a57d2d2c3df853efda2bdf508aab341.zip?download=1"
+          curl --fail --location --retry 4 --retry-all-errors "$URL" -o /tmp/validator-v1.1.zip
+          echo "77dcba8bb08c9cfb924e6d55cb9d89ee2a57d2d2c3df853efda2bdf508aab341  /tmp/validator-v1.1.zip" | sha256sum -c -
+
+      - name: Extract readable source tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/validator-v1.1 source/v1.1
+          mkdir -p /tmp/validator-v1.1 source/v1.1
+          unzip -q /tmp/validator-v1.1.zip -d /tmp/validator-v1.1
+
+          # Mirror text/source assets that GitHub can inspect and diff directly.
+          # Canonical binary artefacts, fonts, PNG/ICO assets and packaged downloads
+          # remain preserved in the Zenodo release.
+          cd /tmp/validator-v1.1
+          while IFS= read -r -d '' f; do
+            mkdir -p "$GITHUB_WORKSPACE/source/v1.1/$(dirname "$f")"
+            cp "$f" "$GITHUB_WORKSPACE/source/v1.1/$f"
+          done < <(find . -type f \(             -name '*.html' -o -name '*.css' -o -name '*.js' -o             -name '*.json' -o -name '*.svg' -o -name '*.txt' -o             -name '*.xml' -o -name '*.webmanifest' -o -name '*.md'           \) -print0)
+
+          cat > "$GITHUB_WORKSPACE/source/v1.1/SOURCE.yml" <<'EOF'
+          software: Validator
+          version: v1.1
+          doi: 10.5281/zenodo.21833853
+          source_of_record: Zenodo
+          canonical_package: 2026-08-09_Validator_v1.1_SHA256-77dcba8bb08c9cfb924e6d55cb9d89ee2a57d2d2c3df853efda2bdf508aab341.zip
+          canonical_sha256: 77dcba8bb08c9cfb924e6d55cb9d89ee2a57d2d2c3df853efda2bdf508aab341
+          scope: readable-source-mirror
+          exclusions:
+            - fonts
+            - png-and-ico-binary-assets
+            - packaged-download-zips
+          note: "The complete canonical package remains the Zenodo artefact. This GitHub tree is an inspection/diff surface derived from that exact verified package."
+          EOF
+
+      - name: Commit synchronized source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add source/v1.1
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Mirror readable Validator v1.1 source from canonical Zenodo package"
+          git push
