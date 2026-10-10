@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link href="../favicon.ico" rel="icon" sizes="any"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../site.webmanifest" rel="manifest"/>
+<link href="https://validator.es/en/generate.html" rel="canonical"/><link href="https://validator.es/generate.html" hreflang="es" rel="alternate"/><link href="https://validator.es/en/generate.html" hreflang="en" rel="alternate"/><link href="https://validator.es/fr/generate.html" hreflang="fr" rel="alternate"/><link href="https://validator.es/generate.html" hreflang="x-default" rel="alternate"/>
+<meta content="Manuel Barrera Anglada (ORCID: 0009-0000-8891-7021)" name="author"/>
+<meta content="PTC protocol, AI disclosure protocol, verifiable declaration, exact file, file integrity, digital content transparency, official document reference, local processing, human-AI collaboration" name="keywords"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<title>Create a PTC declaration — validator.es</title>
+<meta content="Create a PTC declaration bound to a document, an exact file or an official reference. Local processing, no account and no content upload." name="description"/>
+<meta content="Create a PTC declaration — validator.es" property="og:title"/>
+<meta content="Create a PTC declaration bound to a document, an exact file or an official reference. Local processing, no account and no content upload." property="og:description"/>
+<meta content="https://validator.es/en/generate.html" property="og:url"/>
+<link href="../assets/css/fonts.css" rel="stylesheet"/>
+<link href="../assets/css/main.css" rel="stylesheet"/>
+<script src="../assets/libs/jszip.min.js"></script>
+<script src="../assets/libs/qrcode-svg.min.js"></script>
+<script src="../assets/libs/pdf.min.js"></script>
+<script src="../assets/libs/mammoth.browser.min.js"></script>
+<meta content="https://validator.es/icon-512.png" property="og:image"/>
+</head>
+<body>
+<header>
+<nav><a class="logo" href="index.html">△ validator.es</a><ul class="nav-links"><li><a class="active" data-i18n="nav.generate" href="generate.html">Create PTC</a></li><li><a data-i18n="nav.validate" href="validate.html">Verify</a></li><li><a data-i18n="nav.specs" href="specs.html">Protocol</a></li><li><a data-i18n="nav.faq" href="faq.html">Help</a></li></ul><div class="lang-selector"><button class="lang-btn" data-lang="es">ES</button><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="fr">FR</button></div></nav>
+</header>
+<main>
+<h1 data-i18n="generate.title2">Create a PTC declaration</h1>
+<!-- ═══ ETAPA 0 — pantalla inicial única (BETA-02) ═══ -->
+<div id="stage-initial">
+<p class="intro-text" data-i18n="generate.stage0.subtitle">Select any file. You will then answer a few brief questions about AI involvement.</p>
+<label class="drop-zone drop-zone-main" data-input-id="file-input-exact" for="file-input-exact" id="main-dropzone-label" role="button" tabindex="0">
+<span aria-hidden="true" class="drop-zone-main-icon">⇩</span>
+<span class="drop-zone-main-text" data-i18n="generate.stage0.drop">Drag a file here</span>
+<span class="btn drop-zone-main-btn" data-i18n="generate.file.select">Select file</span>
+</label>
+<p class="privacy-hint" data-i18n="generate.stage0.privacy">The file is only processed on this device.</p>
+<p class="stage0-secondary">
+<button class="link-button" data-i18n="generate.stage0.reference_link" id="go-to-reference-btn" type="button">Don't have the file? Create an official document reference</button>
+</p>
+<div class="stage0-info-links">
+<details><summary data-i18n="generate.stage0.what_is_ptc.summary">What is a PTC declaration?</summary><p data-i18n="generate.stage0.what_is_ptc.text">A file that verifiably declares whether an AI system was involved in a document, a file, or a reference, and how. It is cryptographically linked to what it declares: if the file changes, the declaration no longer matches.</p></details>
+<details><summary data-i18n="generate.stage0.privacy_info.summary">Privacy and local processing</summary><p data-i18n="generate.stage0.privacy_info.text">The file never leaves your device. All computation — reading, fingerprints, package generation — happens in your browser. Validator does not upload anything to any server.</p></details>
+</div>
+</div>
+<!-- ═══ ETAPA REFERENCIA — vía secundaria, sin archivo ═══ -->
+<div id="stage-reference" style="display:none;">
+<button class="link-button back-link" id="back-from-reference-btn" type="button">← <span data-i18n="generate.stage0.back">Back</span></button>
+<h2 data-i18n="generate.stageref.title">Reference an official document</h2>
+<p class="mode-panel-desc" data-i18n="generate.step2.ref_short_desc">Protects an identifiable reference through its document data and a URL when applicable.</p>
+<div class="form-group" style="margin-top:.75rem;">
+<label data-i18n="generate.step2.ref_csv_label" for="ref-csv">Secure Verification Code (CSV)</label>
+<p class="helper-text" data-i18n="generate.step2.ref_csv_help" style="margin-bottom:.35rem;">The alphanumeric code that appears at the foot of an electronically signed document. It allows verification of its authenticity at the electronic headquarters.</p>
+<input id="ref-csv" placeholder="p. ej. ABC123XYZ456" style="width:100%;box-sizing:border-box;" type="text"/>
+</div>
+<div class="form-group">
+<label data-i18n="generate.step2.ref_url_label" for="ref-url">Access / verification link</label>
+<p class="helper-text" data-i18n="generate.step2.ref_url_help" style="margin-bottom:.35rem;">The web address where anyone can consult or verify the original document in its official repository.</p>
+<input id="ref-url" placeholder="https://sede.ejemplo.es/verifica/ABC123XYZ456" style="width:100%;box-sizing:border-box;" type="url"/>
+</div>
+<div class="generation-action" id="reference-generation-action"><div aria-busy="false" class="generation-control" id="reference-generation-control"><button class="btn" data-i18n="generate.step2.ref_generate" disabled="" id="generate-reference-btn" type="button">Generate PTC declaration</button></div><p aria-atomic="true" aria-live="polite" id="reference-generation-status" role="status"></p><p aria-atomic="true" hidden="" id="reference-generation-error" role="alert"></p></div>
+</div>
+<!-- ═══ ETAPA ARCHIVO — tras seleccionar en la pantalla inicial ═══ -->
+<div id="stage-file" style="display:none;">
+<button class="link-button back-link" data-i18n="generate.stage_file.change_file" id="change-file-btn" type="button">← Change or select another file</button>
+<!-- Paso 1 (U02): elegir qué proteger, antes que el formulario -->
+<div class="step-container" style="border-bottom:none;padding-bottom:0;">
+<div class="step-label" data-i18n="generate.step2.protect_question" id="protect-question" style="display:none;">What do you want to protect?</div>
+<!-- Pestañas de modo (ocultas de la vista principal; el motor sigue usándolas por debajo) -->
+<div class="mode-tabs" id="mode-tabs" role="tablist" style="display:none;">
+<button aria-controls="input-file" aria-selected="true" class="mode-tab active" data-i18n="generate.step2.mode_file" data-mode="document-content" id="mode-file" role="tab" tabindex="0" type="button">Document content</button>
+<button aria-controls="input-exact-file" aria-selected="false" class="mode-tab" data-i18n="generate.step2.mode_exact_file" data-mode="exact-file" id="mode-exact-file" role="tab" tabindex="-1" type="button">Exact file</button>
+<button aria-controls="input-reference" aria-selected="false" class="mode-tab" data-i18n="generate.step2.mode_reference" data-mode="official-reference" id="mode-reference" role="tab" tabindex="-1" type="button">Official document reference</button>
+</div>
+<!-- Panel 1: contenido de un documento -->
+<div class="mode-panel" id="input-file" role="tabpanel" style="display:none;" tabindex="0">
+<div class="file-picker" data-state="empty" id="file-picker">
+<div class="file-picker__control" id="file-picker-control">
+<label class="drop-zone file-picker__surface visually-hidden" data-input-id="file-input-generate" for="file-input-generate"><span aria-hidden="true" class="drop-zone-icon">⇩</span><span class="file-picker__label" data-i18n="generate.file.select" id="file-picker-label">Select file</span><span class="file-picker__drop-hint" data-i18n="generate.file.drop_hint" id="file-picker-drop-hint">Drag and drop a file here</span><input accept=".txt,.md,.pdf,.docx" aria-labelledby="file-picker-label" id="file-input-generate" type="file"/></label>
+</div>
+<article aria-labelledby="selected-file-title" class="selected-file" hidden="" id="selected-file-card">
+<h3 data-i18n="generate.file.card_title" id="selected-file-title">Selected file</h3>
+<dl class="selected-file__metadata"><div><dt data-i18n="generate.file.name">Received file name</dt><dd id="selected-file-name"></dd></div><div><dt data-i18n="generate.file.size">Size</dt><dd id="selected-file-size"></dd></div><div hidden="" id="selected-file-mime-row"><dt data-i18n="generate.file.mime">MIME type reported by the browser</dt><dd id="selected-file-mime"></dd></div><div><dt data-i18n="generate.file.mode">Selected mode</dt><dd data-i18n="generate.step2.mode_file" id="selected-file-mode">Document content</dd></div></dl>
+<button class="btn btn-secondary selected-file__remove" data-i18n="generate.file.remove" id="remove-file-button" type="button">Remove</button>
+</article>
+<p aria-atomic="true" aria-live="polite" class="visually-hidden" id="file-picker-status" role="status"></p>
+</div>
+<p aria-live="polite" class="helper-text field-error" hidden="" id="file-incompatible-warning" role="alert"></p>
+<div id="file-package-preview" style="display:none;margin-top:.6rem;padding:.6rem .8rem;border-radius:6px;background:var(--surface-alt);border:1px solid var(--border);font-size:.85rem;color:var(--ink-muted);"></div>
+</div>
+<!-- Panel 2: archivo exacto — modo predeterminado -->
+<div class="mode-panel" id="input-exact-file" role="tabpanel" tabindex="0">
+<article aria-labelledby="selected-exact-file-title" class="selected-file" id="selected-exact-file-card">
+<h3 data-i18n="generate.file.card_title" id="selected-exact-file-title">Selected file</h3>
+<dl class="selected-file__metadata"><div><dt data-i18n="generate.file.name">Received file name</dt><dd id="selected-exact-file-name"></dd></div><div><dt data-i18n="generate.file.size">Size</dt><dd id="selected-exact-file-size"></dd></div><div hidden="" id="selected-exact-file-mime-row"><dt data-i18n="generate.file.mime">MIME type reported by the browser</dt><dd id="selected-exact-file-mime"></dd></div><div><dt data-i18n="generate.file.mode">Selected mode</dt><dd data-i18n="generate.step2.mode_exact_file" id="selected-exact-file-mode">Exact file</dd></div></dl>
+<button class="btn btn-secondary selected-file__remove" data-i18n="generate.file.remove" id="remove-exact-file-button" type="button">Remove</button>
+</article>
+<label class="file-picker__surface visually-hidden" for="file-input-exact"><input aria-hidden="true" id="file-input-exact" type="file"/></label>
+<p aria-atomic="true" aria-live="polite" class="visually-hidden" id="exact-file-picker-status" role="status"></p>
+<!-- Panel 3: referencia documental oficial (accesible desde stage-reference) -->
+<div class="mode-panel" id="input-reference" role="tabpanel" style="display:none;" tabindex="0"></div>
+</div>
+<!-- Selector binario: hermano de stage-file, visible independientemente
+     de qué panel de puerta esté activo por debajo -->
+<div id="mode-selector-wrapper" style="display:none;">
+<div aria-label="What do you want to protect" class="mode-selector" id="mode-selector" role="group">
+<button aria-pressed="true" class="mode-selector-btn is-active" data-mode="exact-file" id="mode-select-exact" type="button">
+<span aria-hidden="true" class="mode-selector-check">✓</span>
+<span class="mode-selector-text"><span class="mode-selector-label" data-i18n="generate.stage_file.exact_recommended_short">Exact file</span><span class="mode-selector-badge" data-i18n="generate.stage_file.recommended_badge">Recommended</span></span>
+</button>
+<button aria-pressed="false" class="mode-selector-btn" data-mode="document-content" id="mode-select-textual" type="button">
+<span aria-hidden="true" class="mode-selector-check">✓</span>
+<span class="mode-selector-text"><span class="mode-selector-label" data-i18n="generate.stage_file.textual_short">Textual content</span></span>
+</button>
+</div>
+<div class="mode-indicator" id="exact-mode-indicator">
+<strong data-i18n="generate.stage_file.exact_recommended" id="mode-indicator-title">Exact file — recommended</strong>
+<p class="helper-text" data-i18n="generate.stage_file.exact_recommended_hint" id="mode-indicator-text" style="margin-top:.3rem;font-size:.85rem;">Recommended when you want to verify the complete file as it exists, including format and internal metadata.</p>
+</div>
+<p id="mode-selector-info-row" style="margin-top:.3rem;">
+<button aria-controls="info-textual-mode" aria-expanded="false" aria-label="More information" class="info-btn" type="button">i</button>
+</p>
+<div class="info-panel" hidden="" id="info-textual-mode">
+<p data-i18n="generate.step2.exact_file_short_desc">Will link the PTC to the exact bytes of the file, without interpreting its content. Choosing "Textual content" links the declaration to the normalised text, not the exact bytes: some formatting changes may not produce a different identity.</p>
+<p data-i18n="generate.stage_file.textual_hint" style="margin-top:.5rem;">Use this when you want the declaration to stay linked to the text even if the document’s layout or format changes.</p>
+<button aria-label="Close" class="info-panel-close" type="button">✕</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Transición hacia las preguntas — hermana de las etapas, para que su orden
+     visual sea siempre el correcto sin importar desde qué etapa se revela -->
+<div id="questions-intro" style="display:none;">
+<p data-i18n="generate.stage_file.questions_intro">Just a few brief answers left. We'll ask who is making the declaration, which AI was involved, how it participated, whether there was human review, and what it was used for.</p>
+</div>
+<!-- Paso 2: la declaración PTC, formulario limpio — etiqueta y campo -->
+<div class="step-container" id="declaration-step" style="display:none;">
+<div class="step-label" data-i18n="generate.step1.label2">Describe the AI’s participation</div>
+<form id="declaration-form" novalidate="">
+<div class="form-group">
+<label data-i18n="generate.step1.q1.label" for="operator">Who is making this declaration?</label>
+<input data-i18n-placeholder="generate.step1.q1.placeholder" id="operator" placeholder="Your name, team or organisation" required="" type="text"/>
+</div>
+<div class="form-group">
+<div class="field-label-row">
+<label data-i18n="generate.step1.q3.label" for="ai-system">Which AI system or systems were involved?</label>
+<button aria-controls="info-ai-system" aria-expanded="false" aria-label="More information about the AI system" class="info-btn" type="button">i</button>
+</div>
+<input data-i18n-placeholder="generate.step1.q3.placeholder" id="ai-system" placeholder="E.g. ChatGPT (OpenAI), known model; Claude (Anthropic), model not recorded" required="" type="text"/>
+
+<p class="field-ptc-hint" style="font-size:.82rem;color:var(--ink-muted);margin-top:.3rem;" data-i18n="generate.step1.ptc_value_hint">This is the text that will appear in the PTC.</p>
+<div class="info-panel" hidden="" id="info-ai-system">
+<p data-i18n="generate.step1.q3.help">State the platform or provider and, when known, the model or version. You may declare several systems, separated by semicolons.</p>
+<button aria-label="Close" class="info-panel-close" type="button">✕</button>
+</div>
+</div>
+<div class="triada-group">
+<div class="form-group">
+<div class="field-label-row">
+<label data-i18n="generate.step1.q2.label" for="level">How much did the AI participate in the result?</label>
+<button aria-controls="info-level" aria-expanded="false" aria-label="More information about participation level" class="info-btn" type="button">i</button>
+</div>
+<select id="level" required="">
+<option value="">—</option>
+<option data-i18n="generate.step1.q2.opt.basic" value="basic">Basic — limited assistance</option>
+<option data-i18n="generate.step1.q2.opt.standard" value="standard">Standard — operator-led co-creation</option>
+<option data-i18n="generate.step1.q2.opt.extended" value="extended">Extended — intensive co-creation</option>
+<option data-i18n="generate.step1.q2.opt.other" value="other">Other — case not covered (describe it)</option>
+</select>
+<p aria-live="polite" class="level-dynamic-hint" id="level-hint"></p><div class="level-other-wrapper" hidden="" id="level-other-wrapper"><label data-i18n="generate.step1.q2.other_detail_label" for="level-other-detail">Describe this uncovered case</label><textarea data-i18n-placeholder="generate.step1.q2.other_detail_placeholder" id="level-other-detail" placeholder="Write here what happened and why the previous levels do not fit…"></textarea></div>
+<div class="info-panel" hidden="" id="info-level">
+<p data-i18n="generate.step1.level_anchor">The level describes the intensity of AI participation. It does not change the PTC’s cryptographic validity or the result of its verification. It is not a scale of quality or prestige.</p>
+<div class="info-panel-levels">
+<div><strong data-i18n="generate.step1.level_help.basic.title">Basic — limited assistance</strong><p data-i18n="generate.step1.level_help.basic.text">AI was used for specific, delimited tasks such as correction, translation, summarisation, consultation, reformulation or targeted technical support.</p></div>
+<div><strong data-i18n="generate.step1.level_help.standard.title">Standard — operator-led co-creation</strong><p data-i18n="generate.step1.level_help.standard.text">The process involved dialogue, iterations or joint construction. AI made a relevant contribution, while the operator directed the process, made the substantive decisions and assumed final responsibility.</p></div>
+<div><strong data-i18n="generate.step1.level_help.extended.title">Extended — intensive co-creation</strong><p data-i18n="generate.step1.level_help.extended.text">AI participation was sustained or complex and the process can be described in some detail: how it developed, which systems took part and which relevant decisions were made.</p></div>
+<div><strong data-i18n="generate.step1.level_help.other.title">Other — case not covered</strong><p data-i18n="generate.step1.level_help.other.text">Use this option when the process does not fit the preceding levels. Selecting it opens a dedicated field to describe the case.</p></div>
+</div>
+<button aria-label="Close" class="info-panel-close" type="button">✕</button>
+</div>
+</div>
+<div class="form-group">
+<div class="field-label-row">
+<label data-i18n="generate.step1.q4.label" for="co-creation-mode">What did the AI collaborate on?</label>
+<button aria-controls="info-co-creation" aria-expanded="false" aria-label="More information about the collaboration mode" class="info-btn" type="button">i</button>
+</div>
+<input data-i18n-placeholder="generate.step1.q4.placeholder" id="co-creation-mode" placeholder="E.g. iterative dialogue with final human review" required="" type="text"/>
+<p class="field-ptc-hint" style="font-size:.82rem;color:var(--ink-muted);margin-top:.3rem;" data-i18n="generate.step1.ptc_value_hint">This is the text that will appear in the PTC.</p>
+<div class="info-panel" hidden="" id="info-co-creation">
+<p data-i18n="generate.step1.q4.help">Briefly describe how AI participated. You may combine several forms of participation.</p>
+<button aria-label="Close" class="info-panel-close" type="button">✕</button>
+</div>
+</div>
+<div class="form-group">
+<div class="field-label-row">
+<label data-i18n="generate.step1.q5.label" for="human-review">What human review was carried out?</label>
+<button aria-controls="info-human-review" aria-expanded="false" aria-label="More information about human review" class="info-btn" type="button">i</button>
+</div>
+<select id="human-review" required="">
+<option value="">—</option>
+<option data-i18n="generate.step1.q5.opt.full" value="full">Full — complete review and approval of every part</option>
+<option data-i18n="generate.step1.q5.opt.partial" value="partial">Partial — review of selected sections or aspects</option>
+<option data-i18n="generate.step1.q5.opt.light" value="light">Light — general, non-exhaustive check</option>
+</select>
+<div class="info-panel" hidden="" id="info-human-review">
+<p data-i18n="generate.step1.q5.help">Describe how much a person reviewed and approved the result before considering it final. No option is preselected: it is a fact only you can declare.</p>
+<button aria-label="Close" class="info-panel-close" type="button">✕</button>
+</div>
+</div>
+</div>
+<div class="form-group">
+<div class="field-label-row">
+<label data-i18n="generate.step1.q6.label" for="purpose">What was this content created or used for?</label>
+<button aria-controls="info-purpose" aria-expanded="false" aria-label="More information about purpose and context" class="info-btn" type="button">i</button>
+</div>
+<textarea class="form-group is-other-level-target" data-i18n-placeholder="generate.step1.q6.placeholder" id="purpose" placeholder="Explain what the content was created or used for, how AI participated and any other relevant information about the process." required=""></textarea>
+<div class="info-panel" hidden="" id="info-purpose">
+<p data-i18n="generate.step1.q6.help">Explain what the content was created or used for, how AI participated and any relevant information not covered by the other fields.</p>
+<p data-i18n="generate.step1.q6.example">You may include each system’s role, work stages, human decisions, limitations, incidents or available traceability.</p>
+<p data-i18n="generate.step1.q6.field_name">This content is recorded as purpose in the PTC block.</p>
+<button aria-label="Close" class="info-panel-close" type="button">✕</button>
+</div>
+</div>
+<div class="form-group">
+<div class="field-label-row">
+<label data-i18n="generate.step1.q7.label" for="date-utc">What date do you want to associate with the declaration?</label>
+<button aria-controls="info-date" aria-expanded="false" aria-label="More information about the date" class="info-btn" type="button">i</button>
+</div>
+<input id="date-utc" required="" type="date"/>
+<div class="info-panel" hidden="" id="info-date">
+<p data-i18n="generate.step1.q7.hint">The time is automatically completed with the UTC time at generation.</p>
+<button aria-label="Close" class="info-panel-close" type="button">✕</button>
+</div>
+</div>
+<details class="optional-section">
+<summary data-i18n="generate.step1.optional.summary">DOI / ORCID (optional)</summary>
+<div>
+<div class="info-panel" id="info-doi-orcid">
+<p data-i18n="generate.step1.optional.help">For extended processes, DOI and ORCID are recommended when they exist because they help third parties follow the declared traceability.</p>
+</div>
+<div class="form-group" style="margin-top:.75rem;">
+<label data-i18n="generate.step1.q8.label" for="doi">DOI (optional)</label>
+<input data-i18n-placeholder="generate.step1.q8.placeholder" id="doi" placeholder="10.5281/zenodo.xxxxxxx" type="text"/>
+</div>
+<div class="form-group">
+<label data-i18n="generate.step1.q9.label" for="orcid">ORCID (optional)</label>
+<input data-i18n-placeholder="generate.step1.q9.placeholder" id="orcid" placeholder="0000-0000-0000-0000" type="text"/>
+</div>
+</div>
+</details>
+</form>
+</div>
+<!-- Divulgación pública — trasladada al final del proceso declarativo -->
+<div id="disclosure-block" style="display:none;">
+<div class="form-group" id="disclosure-gate1-group">
+<label style="display:flex;align-items:center;gap:.5rem;font-weight:600;">
+<input id="disclosure-gate1-toggle" type="checkbox"/>
+<span data-i18n="generate.step2.disclosure_gate1">I am going to publish or share this content</span>
+</label>
+</div>
+<div hidden="" id="disclosure-gate2-wrapper">
+<div class="form-group" id="disclosure-toggle-group">
+<label style="display:flex;align-items:center;gap:.5rem;font-weight:600;">
+<input id="exact-disclosure-toggle" type="checkbox"/>
+<span data-i18n="generate.step2.disclosure_gate2">I want Validator to help me prepare the public notice</span>
+</label>
+</div>
+</div>
+<div hidden="" id="exact-disclosure-fields">
+<div class="form-group">
+<div class="field-label-row">
+<label data-i18n="generate.step2.disclosure_type_label" for="disclosure-type">Type of intervention</label>
+</div>
+<select id="disclosure-type">
+<option data-i18n="generate.step2.disclosure_type.generated" value="ai_generated">Generated with AI</option>
+<option data-i18n="generate.step2.disclosure_type.modified" value="ai_modified">Modified with AI</option>
+<option data-i18n="generate.step2.disclosure_type.generated_or_modified" value="ai_generated_or_modified">Generated or modified with AI</option>
+</select>
+</div>
+<div class="form-group">
+<div class="field-label-row">
+<label data-i18n="generate.step2.disclosure_url_label" for="disclosure-url">Verification URL (optional)</label>
+<button aria-controls="info-disclosure-url" aria-expanded="false" aria-label="More information about the verification URL" class="info-btn" type="button">i</button>
+</div>
+<input id="disclosure-url" placeholder="https://" style="width:100%;box-sizing:border-box;" type="url"/>
+<p aria-live="polite" class="helper-text field-error" hidden="" id="disclosure-url-error" role="alert"></p>
+<div class="info-panel" hidden="" id="info-disclosure-url">
+<p data-i18n="generate.step2.disclosure_url_help">Validator does not publish or host this address. Use a stable URL that you control or have reserved for the declaration.</p>
+<button aria-label="Close" class="info-panel-close" type="button">✕</button>
+</div>
+</div>
+<div class="form-group" id="eu-kit-group">
+<div class="field-label-row">
+<label for="eu-kit-toggle" style="display:flex;align-items:center;gap:.5rem;font-weight:600;">
+<input id="eu-kit-toggle" type="checkbox"/>
+<span data-i18n="generate.eu.toggle_question">Do you want to include the European publication material corresponding to your declaration?</span>
+</label>
+<button aria-controls="info-eu-kit" aria-expanded="false" aria-label="More information about the European material" class="info-btn" type="button">i</button>
+</div>
+<div class="info-panel" hidden="" id="info-eu-kit">
+<p data-i18n="generate.eu.legal_note">The icon is selected based on your declaration. Its inclusion does not determine that a legal obligation exists, does not certify compliance, and does not imply adherence to the Code of Practice.</p>
+<button aria-label="Close" class="info-panel-close" type="button">✕</button>
+</div>
+<div hidden="" id="eu-kit-preview">
+<div id="eu-kit-preview-image" style="margin:.6rem 0;"></div>
+<details class="optional-section">
+<summary data-i18n="generate.eu.advanced.summary">Advanced options — correct the icon</summary>
+<div class="form-group" style="margin-top:.5rem;">
+<label data-i18n="generate.eu.advanced.select_label" for="eu-icon-override">Icon to use</label>
+<select id="eu-icon-override">
+<option data-i18n="generate.eu.advanced.auto" value="">Automatic, based on the declaration</option>
+<option data-i18n="generate.step2.disclosure_type.generated_or_modified" value="basic">Generated or modified with AI</option>
+<option data-i18n="generate.eu.icon.fully" value="fully-ai-generated">Fully AI-Generated</option>
+<option data-i18n="generate.eu.icon.partially" value="partially-ai-modified">Partially AI-Modified</option>
+</select>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+<div id="summary-section" style="display:none;">
+<div class="summary-box" id="summary-box"></div>
+</div>
+<div class="generation-action" id="exact-file-generation-action" style="display:none;"><div aria-busy="false" class="generation-control" id="exact-file-generation-control"><button class="btn" disabled="" id="generate-exact-file-button" type="button"><span data-i18n="generate.action" id="generate-exact-file-button-label">Generate PTC declaration</span></button><p data-i18n="generate.status_ready" hidden="" id="exact-file-generation-ready">File and declaration ready to generate.</p></div><p aria-atomic="true" aria-live="polite" id="exact-file-generation-status" role="status"></p><p aria-atomic="true" hidden="" id="exact-file-generation-error" role="alert"></p></div>
+<div class="generation-action" id="generation-action" style="display:none;"><div aria-busy="false" class="generation-control" id="generation-control"><button class="btn" disabled="" id="generate-ptc-button" type="button"><span data-i18n="generate.action" id="generate-ptc-button-label">Generate PTC declaration</span></button><p data-i18n="generate.status_ready" hidden="" id="generation-ready">File and declaration ready to generate.</p></div><p aria-atomic="true" aria-live="polite" id="generation-status" role="status"></p><p aria-atomic="true" hidden="" id="generation-error" role="alert"></p></div>
+<!-- Step 2 result (hidden until generated), compartido por las tres puertas -->
+<div id="exact-file-step-2" style="display:none;">
+<div class="step-container">
+<div class="step-label" data-i18n="generate.step2.ptc_ready">PTC generated</div>
+<pre class="ptc-block" id="exact-file-ptc-output"></pre>
+<div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem;">
+<button class="btn" data-i18n="generate.step2.download_zip" id="exact-file-download-zip-btn">Download ZIP package</button>
+</div>
+</div>
+</div>
+<!-- Step 2 result (hidden until generated) -->
+<div id="step-2" style="display:none;">
+<div class="step-container">
+<div class="step-label" data-i18n="generate.step2.ptc_ready">PTC generated</div>
+<pre class="ptc-block" id="ptc-output"></pre>
+<div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem;">
+<button class="btn btn-secondary" data-i18n="generate.step2.copy_ptc" id="copy-ptc-btn">Copy PTC</button>
+<button class="btn" data-i18n="generate.step2.download_zip" id="download-zip-btn">Download ZIP package</button>
+</div>
+<!-- Micro pedagogy post-generation -->
+<div class="micro-pedagogy" style="margin-top:1.5rem;">
+<div class="micro-pedagogy-title" data-i18n="generate.micro.title">What you just created</div>
+<div class="micro-pedagogy-rows">
+<div class="micro-row">
+<span class="micro-row-key">hash_doc_sha256</span>
+<span class="micro-row-val" data-i18n="generate.micro.doc">Cryptographically binds the declaration to the protected object</span>
+</div>
+<div class="micro-row">
+<span class="micro-row-key">hash_ptc_sha256</span>
+<span class="micro-row-val" data-i18n="generate.micro.ptc">Protects this transparency declaration</span>
+</div>
+<div class="micro-row">
+<span class="micro-row-key">hash_ethical_context_sha256</span>
+<span class="micro-row-val" data-i18n="generate.micro.ethical">Protects the declared conditions of creation</span>
+</div>
+</div>
+<p style="margin-top:.75rem;margin-bottom:0;">
+<a data-i18n="generate.micro.learn_more" href="specs.html" style="font-size:.85rem;">More about the protocol →</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<footer><div class="footer-inner"><p class="footer-ecosystem"><span data-i18n="footer.ecosystem">Part of the ACS ecosystem —</span> <a data-i18n="footer.ecosystem_link" href="https://elcanal.es" rel="noopener" target="_blank">El Canal</a></p><div class="footer-meta footer-links"><a data-i18n="footer.protocol" href="specs.html">Protocol</a> · <a data-i18n="footer.regulation" href="regulation.html">Regulation</a> · <a data-i18n="footer.why" href="why.html">Why it exists</a> · <a data-i18n="footer.help" href="faq.html">Help</a> · <a data-i18n="footer.about" href="about.html">About</a> · <a data-i18n="footer.portable" href="portable.html">Local distribution · Zenodo</a> · <a data-i18n="footer.acs6" href="acs6.html">ACS-6 background</a> · <a href="https://orcid.org/0009-0000-8891-7021" rel="noopener" target="_blank">ORCID 0009-0000-8891-7021</a> · <a href="mailto:contacto@validator.es">contacto@validator.es</a></div><p class="footer-legal" data-i18n="footer.privacy">No cookies. No trackers. All processing is local in your browser.</p></div></footer>
+<script>
+    if (window.pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        '../assets/libs/pdf.worker.min.js';
+    }
+  </script>
+<script src="../assets/i18n/es.js"></script>
+<script src="../assets/i18n/en.js"></script>
+<script src="../assets/i18n/fr.js"></script>
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/ptc-core.js"></script>
+<script src="../assets/js/ptc-adapters.js"></script>
+<script src="../assets/js/ptc-package.js"></script>
+<script src="../assets/js/ptc-frs.js"></script>
+<script src="../assets/js/ptc-package2.js"></script>
+<script>
+(function() {
+  var euLoaded = false;
+  function loadEuIcons(onSuccess, onError) {
+    if (euLoaded) { if (onSuccess) onSuccess(); return; }
+    var s = document.createElement('script');
+    s.src = '../assets/js/eu-icons.js';
+    s.onload = function() { euLoaded = true; if (onSuccess) onSuccess(); };
+    s.onerror = function() { if (onError) onError(); };
+    document.head.appendChild(s);
+  }
+  window.loadEuIcons = loadEuIcons;
+})();
+</script>
+<script src="../assets/js/info-panel.js"></script>
+<script src="../assets/js/dropzone.js"></script><script src="../assets/js/generate.js"></script>
+</body>
+</html>

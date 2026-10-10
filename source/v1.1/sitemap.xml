@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://validator.es/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/"/>
+  </url>
+  <url>
+    <loc>https://validator.es/generate.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/generate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/generate.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/generate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/generate.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/validate.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/validate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/validate.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/validate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/validate.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/specs.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/specs.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/specs.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/specs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/specs.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/faq.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/faq.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/regulation.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/regulation.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/regulation.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/regulation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/regulation.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/why.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/why.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/why.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/why.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/why.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/about.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/about.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/portable.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/portable.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/portable.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/portable.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/portable.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/acs6.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/acs6.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/acs6.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/acs6.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/acs6.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/en/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/"/>
+  </url>
+  <url>
+    <loc>https://validator.es/en/generate.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/generate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/generate.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/generate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/generate.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/en/validate.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/validate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/validate.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/validate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/validate.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/en/specs.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/specs.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/specs.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/specs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/specs.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/en/faq.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/faq.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/en/regulation.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/regulation.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/regulation.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/regulation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/regulation.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/en/why.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/why.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/why.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/why.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/why.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/en/about.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/about.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/en/portable.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/portable.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/portable.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/portable.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/portable.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/en/acs6.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/acs6.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/acs6.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/acs6.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/acs6.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/fr/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/"/>
+  </url>
+  <url>
+    <loc>https://validator.es/fr/generate.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/generate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/generate.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/generate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/generate.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/fr/validate.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/validate.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/validate.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/validate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/validate.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/fr/specs.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/specs.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/specs.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/specs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/specs.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/fr/faq.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/faq.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/fr/regulation.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/regulation.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/regulation.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/regulation.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/regulation.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/fr/why.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/why.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/why.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/why.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/why.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/fr/about.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/about.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/fr/portable.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/portable.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/portable.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/portable.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/portable.html"/>
+  </url>
+  <url>
+    <loc>https://validator.es/fr/acs6.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://validator.es/acs6.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://validator.es/en/acs6.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://validator.es/fr/acs6.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://validator.es/acs6.html"/>
+  </url>
+</urlset>

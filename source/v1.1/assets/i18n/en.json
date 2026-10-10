@@ -1,0 +1,943 @@
+{
+  "nav": {
+    "validate": "Verify",
+    "generate": "Create PTC",
+    "acs6": "ACS-6 background",
+    "faq": "Help",
+    "about": "About",
+    "portable": "Local distribution",
+    "regulation": "Regulation",
+    "why": "Why",
+    "specs": "Protocol"
+  },
+  "home": {
+    "title": "Verifiable declarations about AI participation in documents",
+    "subtitle": "No detection. Full verifiable traceability.",
+    "philosophy": "AI transparency can be approached through detection or through verifiable declaration. Validator.es belongs to the second tradition.",
+    "cta": {
+      "validate": "Verify a declaration",
+      "generate": "Create a PTC",
+      "learn": "View the protocol",
+      "portable": "↓ Local distribution for offline or intranet use"
+    },
+    "col1": {
+      "title": "Declare",
+      "text": "Generate a PTC block recording how AI participated in your document, with three complementary integrity hashes."
+    },
+    "col2": {
+      "title": "Verify",
+      "text": "Check that a document with a PTC has not been modified and that its creation conditions are intact."
+    },
+    "col3": {
+      "title": "No detection",
+      "text": "This system does not detect AI-generated content. It verifies declared information only."
+    },
+    "problem": {
+      "title": "When content is created with AI assistance, the result alone does not explain how it was produced",
+      "subtitle": "There is no standard way to know how a document was produced, or to verify what its author declares about the use of artificial intelligence."
+    },
+    "solution": {
+      "what": "Validator.es records information about human and AI participation, calculates the corresponding cryptographic fingerprints and generates a package that allows later verification of the integrity of both the content and the declaration.",
+      "integrity": "Validator verifies technical integrity and the declaration’s conformance with the PTC protocol. The package gathers technical evidence for traceability and later review; it does not certify the truth of the declaration, has no autonomous evidentiary value, and does not replace an audit, expert examination or legal assessment of the specific case."
+    },
+    "action": {
+      "generate": "Create PTC",
+      "validate": "Verify",
+      "portable": "↓ Local distribution for offline or intranet use"
+    },
+    "audience": {
+      "title": "Who it's for",
+      "researchers": {
+        "title": "Researchers",
+        "text": "Document AI use in publications, datasets and research materials with verifiable traceability and persistent identifiers."
+      },
+      "admin": {
+        "title": "Public administrations",
+        "text": "Verifiable declarations for documents and digital files produced or processed with AI assistance.",
+        "link": "Transparency and regulation →"
+      },
+      "orgs": {
+        "title": "Organizations",
+        "text": "An open standard for documenting AI use in production, review and archival workflows."
+      },
+      "open": {
+        "title": "Civil society and creators",
+        "text": "A free, local way to accompany any content with a transparency declaration."
+      }
+    },
+    "ecosystem": {
+      "title": "Protocol and ecosystem",
+      "text": "Validator.es implements the Canal Transparency Protocol (PTC), published openly and developed within the ACS — El Canal ecosystem.",
+      "protocol": "View the current protocol",
+      "doi": "Specifications and DOI",
+      "regulation": "Transparency and regulation"
+    },
+    "observation": {
+      "intro": "We found it in very different contexts:",
+      "research": "A researcher needed to demonstrate how they had built a result with AI assistance.",
+      "admin": "A civic observatory needed to demonstrate what information it had actually received from public administrations.",
+      "essay": "An essay needed to document the traceability of its construction process.",
+      "link": "Why Validator exists →"
+    },
+    "hero": {
+      "eyebrow": "Transparency · AI · Digital content",
+      "subtitle": "Create a verifiable declaration and cryptographically bind it to a document or any other digital file."
+    },
+    "badges": {
+      "local": "Fully local",
+      "nocookies": "No cookies",
+      "open": "CC BY 4.0",
+      "portable": "Local distribution",
+      "doi": "Verifiable DOI",
+      "regulation": "Transparency and regulation"
+    },
+    "modes": {
+      "title": "Two ways to work",
+      "documents": {
+        "title": "Supported documents",
+        "text": "TXT, Markdown, DOCX and PDF are processed through adapters and produce a canonical text representation under the current specifications."
+      },
+      "files": {
+        "title": "Exact files",
+        "text": "Images, audio, video, code, ZIP files, datasets and other formats can be linked as exact files. Validator does not interpret their content: it preserves their byte-for-byte cryptographic identity."
+      }
+    },
+    "preserve": {
+      "title": "What it preserves",
+      "intro": "The package includes:",
+      "item1": "Original file",
+      "item2": "PTC declaration",
+      "item3": "Cryptographic fingerprints",
+      "item4": "Canonical object where applicable",
+      "item5": "Manifest and auxiliary elements"
+    },
+    "limits": {
+      "title": "What Validator does not do",
+      "text": "It does not automatically detect whether content was AI-generated, certify the truth of a declaration, assess content quality, guarantee legal compliance by itself, or replace an audit or expert examination."
+    }
+  },
+  "validate": {
+    "title": "Verify a PTC declaration",
+    "intro": "Validator independently reconstructs the canonical object and checks that it matches the existing PTC declaration.",
+    "file_label": "Artifact or package to verify",
+    "formats": "PTC package (exact file or reference) · TXT/MD artefact · Compatible document (PDF/DOCX)",
+    "warning": "ZIP: identifies the package format and checks the declaration, the protected object, the source file and the available structure as applicable. TXT/MD: reproducible textual verification. PDF/DOCX: experimental extraction.",
+    "idle": "No file has been verified yet.",
+    "processing": "Verifying…",
+    "report": {
+      "preflight": {
+        "title": "Preflight"
+      },
+      "result": {
+        "title": "Result",
+        "valid": {
+          "title": "Conformant",
+          "message": "PTC present and all hashes match.",
+          "explanation": "The declaration is technically conformant and the applicable integrity checks are correct. Validator does not certify the factual truth of the declaration or legal compliance in the specific case."
+        },
+        "valid_warning": {
+          "title": "Conformant with notices",
+          "message": "PTC is valid and hashes match, but warnings are present.",
+          "explanation": "The declaration is technically conformant, but there are notices worth reviewing before considering it complete."
+        },
+        "invalid": {
+          "title": "Non-conformant",
+          "message": "PTC is absent, incomplete, or hashes do not match.",
+          "explanation": "If you used PDF or DOCX, text extraction may vary. TXT is recommended."
+        },
+        "no_ptc": {
+          "title": "PTC not found",
+          "message": "No <PTC>…</PTC> block was detected in the document.",
+          "explanation": "If you generated a PTC, make sure it is included at the end of the document."
+        },
+        "ptc_invalid": {
+          "title": "PTC found but invalid",
+          "message": "A PTC block was found but could not be parsed.",
+          "explanation": "Check that it uses key: value lines inside <PTC> and </PTC>."
+        },
+        "extraction_failed": {
+          "title": "Extraction failed",
+          "message": "The file loaded but text could not be extracted.",
+          "explanation": "The file may be scanned, protected, or not extractable in the browser. TXT is recommended."
+        },
+        "unexpected_error": {
+          "title": "Unexpected error",
+          "message": "An unexpected error occurred during validation.",
+          "explanation": "Please try again. PDF/DOCX are experimental; TXT is more reliable."
+        },
+        "public_title": {
+          "conforme": "Conformant",
+          "conforme_avisos": "Conformant with notices",
+          "no_conforme": "Non-conformant"
+        }
+      },
+      "details": {
+        "title": "View technical details"
+      }
+    },
+    "preflight": {
+      "file_loaded_ok": "File loaded successfully",
+      "file_loaded_fail": "File loading failed",
+      "text_extracted_ok": "Text extracted successfully",
+      "text_extracted_fail": "Text extraction failed",
+      "format": "Format",
+      "format_experimental": "(experimental)",
+      "ptc_detected_yes": "PTC block detected",
+      "ptc_detected_no": "PTC block not detected",
+      "note": "Note"
+    },
+    "checks": {
+      "doc_hash": "Document hash",
+      "ptc_hash": "PTC hash",
+      "ethical_hash": "Ethical context hash",
+      "match": "match",
+      "mismatch": "mismatch",
+      "not_computed": "not computed",
+      "absent": "absent (recommended)",
+      "declared": "declared",
+      "computed": "computed"
+    },
+    "micro": {
+      "title": "What each hash guarantees",
+      "doc": "Protects the canonical object bound to the declaration",
+      "ptc": "Protects the transparency declaration",
+      "ethical": "Protects the declared conditions of creation"
+    },
+    "errors": {
+      "E001": "PTC opening tag not found.",
+      "E002": "PTC closing tag not found.",
+      "E003": "PTC could not be parsed. Check the format.",
+      "E005": "Document hash mismatch: the content may have changed after the declaration.",
+      "E006": "PTC hash mismatch: the declaration may have been modified.",
+      "MISSING_HASH_DOC_SHA256": "Field hash_doc_sha256 is missing.",
+      "MISSING_HASH_PTC_SHA256": "Field hash_ptc_sha256 is missing.",
+      "INVALID_HASH_SCOPE": "Unrecognized hash_scope value.",
+      "EXTRACTION_FAILED": "Text extraction failed.",
+      "EXTRACTION_EMPTY": "Extracted text is empty.",
+      "HASH_DOC_ERROR": "Error computing document hash.",
+      "HASH_PTC_ERROR": "Error computing PTC hash.",
+      "HASH_DOC_TIMEOUT": "Timeout computing document hash.",
+      "HASH_PTC_TIMEOUT": "Timeout computing PTC hash.",
+      "E_TRAILING": "Content found after the </PTC> closing tag. The canonical artefact must end exactly at that closing tag, with no character after it.",
+      "E_NO_CLOSE": "PTC closing tag </PTC> not found.",
+      "E_NO_OPEN": "PTC opening tag <PTC> not found.",
+      "E_EMPTY_PTC": "The PTC block contains no parseable fields.",
+      "ENGINE_NOT_LOADED": "The validation engine failed to load.",
+      "E_INVALID_LEVEL": "The level field contains an unrecognised value. Valid values are: basic, standard, extended, other.",
+      "E_INVALID_HUMAN_REVIEW": "The human_review field contains an unrecognised value. Valid values are: full, partial, light.",
+      "E_INVALID_DATE_UTC": "The date_utc field does not follow the required full ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ), or represents a date or time that does not exist in the Gregorian calendar.",
+      "E_INVALID_HASH_FORMAT": "One of the hash fields does not have the expected 64-character hexadecimal format.",
+      "E_PIPE_NOT_ALLOWED": "One of the fields used in the ethical hash contains the «|» character, which is not allowed because it can shift the boundary between fields.",
+      "E007": "The ethical context hash does not match: the declared creation conditions may have been altered.",
+      "E_NON_CANONICAL_FORM": "The received PTC block does not match the canonical form a conformant generator would produce for these same fields. The hashes are self-consistent, but the physical format is not unique, which violates the principle that two conformant implementations must produce the same object.",
+      "E_UNSUPPORTED_VERSION": "The version field does not correspond to any normative profile supported by this implementation.",
+      "E_UNSUPPORTED_HISTORICAL_PROFILE": "This artefact declares version: 6 (historical ACS-6 generation). This implementation does not yet formally validate that historical profile.",
+      "E_SCOPE_SHAPE_MISMATCH": "The hash_scope field declares “CSV+URL reference”, but the document object does not have that shape (exactly two lines “CSV: <value>” and “URL: <value>”). The declaration and the linked object do not correspond.",
+      "E_AMBIGUOUS_CLOSE": "More than one «</PTC>» line exists between the block's opening and closing. The closing delimiter is ambiguous.",
+      "E_CONT_NOT_ALLOWED_FOR_KEY": "A continuation line was found after a field other than purpose. Only purpose allows multiline continuations.",
+      "E_CONT_WITHOUT_KEY": "A continuation line was found without an immediately preceding purpose field.",
+      "E_CR_NOT_ALLOWED_IN_PTC": "The PTC block contains a CR character. Only LF is allowed as a line separator within the block.",
+      "E_DUPLICATE_KEY": "A key appears more than once in the PTC block.",
+      "E_EMPTY_REQUIRED_FIELD": "A required field has an empty logical value, or one composed exclusively of spaces, tabs or line breaks.",
+      "E_FIELD_OUT_OF_ORDER": "The PTC block's fields do not follow the normative order defined by PTC-F.",
+      "E_MALFORMED_LINE": "A line in the PTC block does not follow the «key: value» format.",
+      "E_MISSING_REQUIRED_FIELD": "A required field is missing from the PTC block.",
+      "E_PTC_CLOSE_AS_LOGICAL_LINE": "A purpose continuation line's logical value is exactly «</PTC>», which is not conformant.",
+      "E_UNKNOWN_KEY": "The PTC block contains a key not defined by PTC-F."
+    },
+    "warnings": {
+      "W001": "Text was found after the </PTC> closing tag.",
+      "W020": "PDF/DOCX extraction is experimental and may affect hash reproducibility."
+    },
+    "quick": {
+      "document_hash": "Document hash",
+      "ptc_hash": "PTC hash",
+      "match": "match",
+      "mismatch": "mismatch",
+      "not_computed": "not computed",
+      "declared": "declared",
+      "computed": "computed",
+      "warnings": "Warnings",
+      "errors": "Errors"
+    },
+    "zip_package": "PTC-P Package",
+    "zip_detected": "PTC distribution package detected. Validating the internal canonical artefact.",
+    "zip_manifest_ok": "Valid manifest — hash_ethical_context identified",
+    "zip_no_manifest": "No manifest — validating document_with_ptc.txt directly",
+    "hint": {
+      "zip": "📦 PTC distribution package. The canonical artefact will be validated and the available pieces checked for coherence.",
+      "txt": "📄 TXT artefact. Direct and reproducible validation.",
+      "pdf": "📑 Experimental PDF. For stronger validation use the distribution package or canonical TXT.",
+      "docx": "📝 Experimental DOCX. Validator reconstructs the PTC block from the final paragraphs. For maximum reproducibility use the distribution package.",
+      "md": "Ⓜ️ Markdown is treated as UTF-8 text. Its syntax is part of the content linked by the declaration."
+    },
+    "schema": {
+      "title": "Distribution package contents",
+      "canonical": "canonical artefact",
+      "docx": "DOCX representation",
+      "pdf": "PDF representation",
+      "ptc": "PTC block",
+      "manifest": "manifest",
+      "readme": "documentation",
+      "valid": "valid",
+      "invalid": "invalid",
+      "present": "present",
+      "generated_from": "Generated from",
+      "representations": "Representations",
+      "rep_valid": "conformant",
+      "rep_mismatch": "divergent",
+      "rep_missing": "not found",
+      "rep_no_extractor": "no extractor",
+      "rep_error": "not verifiable",
+      "source_original": "original source",
+      "canonical_document": "canonical object without PTC",
+      "canonical_artifact": "canonical artefact with PTC",
+      "representation_markdown": "Markdown representation",
+      "representation_docx": "DOCX representation",
+      "representation_pdf": "PDF representation",
+      "ptc_block": "PTC block",
+      "documentation": "documentation",
+      "file": "file"
+    },
+    "package": {
+      "PACKAGE_MANIFEST_INVALID": "The manifest is not valid JSON; the canonical artefact was validated using known paths.",
+      "PACKAGE_MANIFEST_MISSING": "No manifest is present; this may be a legacy or incomplete package.",
+      "PACKAGE_MANIFEST_HASH_MISMATCH": "Hashes declared by the manifest do not match the validated PTC.",
+      "PACKAGE_TYPE_UNKNOWN": "The declared package type is not recognised.",
+      "PACKAGE_LEGACY_TERMINOLOGY": "Legacy package: it uses the historic “ptc-canonical” term. The ZIP is still treated as a distribution container.",
+      "PACKAGE_CANONICAL_DOCUMENT_MISMATCH": "The canonical TXT without PTC does not match the declared document prefix.",
+      "PACKAGE_CANONICAL_DOCUMENT_ERROR": "The canonical TXT without PTC could not be read.",
+      "PACKAGE_CANONICAL_DOCUMENT_MISSING": "The canonical TXT without PTC expected by this package schema is missing.",
+      "PACKAGE_PTC_BLOCK_MISMATCH": "The isolated ptc.txt does not match the block in the canonical artefact.",
+      "PACKAGE_PTC_BLOCK_ERROR": "The isolated PTC block could not be read.",
+      "PACKAGE_PTC_BLOCK_MISSING": "The isolated PTC block is missing.",
+      "PACKAGE_SOURCE_DIVERGES": "The preserved source does not reproduce the declared textual object with the stated adapter.",
+      "PACKAGE_SOURCE_NOT_REPRODUCIBLE": "The textual object could not be reproduced from the preserved source.",
+      "PACKAGE_SOURCE_MISSING": "The original source expected for a documentary package is missing.",
+      "PACKAGE_REPRESENTATION_DIVERGES": "A derived representation does not reproduce the same declared document object."
+    },
+    "drop_title": "Drag and drop the file here",
+    "drop_action": "or choose a file",
+    "drop_ready": "File ready",
+    "format": {
+      "package2": "Format detected: Validator Package Format 2.0",
+      "legacy": "Format detected: compatible PTC v1.0 distribution",
+      "textual": "Format detected: textual PTC record",
+      "unknown": "Format not automatically recognised"
+    },
+    "pkg2": {
+      "axis_ptc": "PTC declaration",
+      "axis_source": "Source file",
+      "axis_package": "Package structure",
+      "axis_disclosure": "Public disclosure",
+      "disclosure_omitted": "No public notice included (optional)",
+      "state": {
+        "green": "Correct",
+        "amber": "Attention",
+        "red": "Non-conformant"
+      },
+      "ptc_valid": "The PTC declaration is valid for this canonical object.",
+      "ptc_invalid": "The PTC declaration or the protected object is not conformant.",
+      "source_valid": "The file matches the linked one exactly.",
+      "package_valid": "The package structure is conformant.",
+      "package_issues": "Issues were detected in the package structure:",
+      "disclosure_valid": "The public notice matches the protected declaration.",
+      "reason": {
+        "missing_integrated": "canonical/file_reference_with_ptc.txt was not found.",
+        "source_not_provided": "The original file was not provided. The declaration can be verified, but not the source.",
+        "unrecognized_profile": "The reference profile is not recognised. No source comparison was performed.",
+        "multiple_source": "There is more than one file under source/. FRS-01 requires exactly one.",
+        "source_mismatch": "The provided file differs from the linked one.",
+        "ptc_axis_unavailable": "The source cannot be checked because the PTC declaration is not valid.",
+        "notice_without_block": "Notice artefacts exist without a protected declaration to support them.",
+        "unknown_type": "The declared intervention type is not recognised.",
+        "unsupported_language": "The declared language is not supported in this version.",
+        "notice_missing": "PUBLIC_NOTICE/notice.txt is missing.",
+        "notice_mismatch": "The included notice does not match what the profile must generate.",
+        "manifest_folder_incoherent": "The presence of PUBLIC_NOTICE/ and of public_notice in the manifest is not coherent.",
+        "hostile_entry": "The package contains an entry with an anomalous size or compression ratio. It has been rejected for security reasons, without decompressing it."
+      },
+      "issue": {
+        "hostile_entry_rejected": "The package contains an entry with an anomalous size or compression ratio. It has been rejected for security reasons, without decompressing it."
+      }
+    },
+    "intro2": "Select a PTC package or a compatible file. Validator will check the applicable integrity and technical conformity, without uploading the content.",
+    "formats_summary": "Supported formats",
+    "ordinary_zip": {
+      "text": "This ZIP does not contain a recognised PTC package.",
+      "cta": "Create a declaration for this file"
+    },
+    "privacy_hint": "Verification takes place locally on this device. The file is not uploaded to any server.",
+    "result_limit": "Technical result. It does not certify the truth of the content nor replace a legal or expert evaluation."
+  },
+  "generate": {
+    "title": "Create a PTC declaration",
+    "intro": "Complete the declaration and add your document. You will receive a distribution package containing the verifiable declaration and the pieces needed to audit the transformation.",
+    "step1": {
+      "label": "Step 2 — Describe the co-creation",
+      "q1": {
+        "label": "Who is making this declaration?",
+        "placeholder": "Your name, team or organisation"
+      },
+      "q2": {
+        "label": "How much did the AI participate in the result?",
+        "opt": {
+          "basic": "Basic — limited assistance",
+          "standard": "Standard — operator-led co-creation",
+          "extended": "Extended — intensive co-creation",
+          "other": "Other — case not covered (describe it)"
+        },
+        "other_detail_placeholder": "Write here what happened and why the previous levels do not fit…",
+        "other_detail_label": "Describe this uncovered case"
+      },
+      "q3": {
+        "label": "Which AI system or systems were involved?",
+        "placeholder": "E.g. ChatGPT (OpenAI), known model; Claude (Anthropic), model not recorded",
+        "help": "State the platform or provider and, when known, the model or version. You may declare several systems, separated by semicolons.",
+        "open_help": "You may enter any system, model or version, even if it is not listed among the suggestions.",
+        "preset_hint": "You can choose a reference and then change it or type freely.",
+        "preset": {
+          "gemini": "Gemini (Google)",
+          "other": "Other system / type freely",
+          "local": "Local model — state name and version",
+          "copilot": "Microsoft Copilot",
+          "chatgpt": "ChatGPT (OpenAI)",
+          "choose": "— Choose an option —",
+          "claude": "Claude (Anthropic)"
+        }
+      },
+      "q4": {
+        "label": "What did the AI collaborate on?",
+        "placeholder": "E.g. iterative dialogue with final human review",
+        "help": "Briefly describe how AI participated. You may combine several forms of participation.",
+        "open_help": "You may choose a suggestion or freely describe any other form of collaboration.",
+        "preset": {
+          "initial_review": "Initial generation and human review",
+          "limited": "Limited assistance",
+          "research": "Assisted research",
+          "other": "Other task / write freely",
+          "comparison": "Comparison across several systems",
+          "iterative": "Iterative human–AI dialogue",
+          "review_edit": "Review and editing",
+          "translation": "Translation and review"
+        },
+        "preset_hint": "You can start from an option and then edit it freely"
+      },
+      "q5": {
+        "label": "What human review was carried out?",
+        "opt": {
+          "full": "Full — complete review and approval of every part",
+          "partial": "Partial — review of selected sections or aspects",
+          "light": "Light — general, non-exhaustive check"
+        },
+        "help": "Describe how much a person reviewed and approved the result before considering it final. No option is preselected: it is a fact only you can declare."
+      },
+      "q6": {
+        "label": "What was this content created or used for?",
+        "placeholder": "Explain what the content was created or used for, how AI participated and any other relevant information about the process.",
+        "help": "Explain what the content was created or used for, how AI participated and any relevant information not covered by the other fields.",
+        "example": "You may include each system’s role, work stages, human decisions, limitations, incidents or available traceability.",
+        "field_name": "This content is recorded as purpose in the PTC block."
+      },
+      "q7": {
+        "label": "What date do you want to associate with the declaration?",
+        "placeholder": "2026-05-30",
+        "hint": "The time is automatically completed with the UTC time at generation."
+      },
+      "q8": {
+        "label": "DOI (optional)",
+        "placeholder": "10.5281/zenodo.xxxxxxx"
+      },
+      "q9": {
+        "label": "ORCID (optional)",
+        "placeholder": "0000-0000-0000-0000"
+      },
+      "purpose_help": "Describe the purpose of the document and how AI was used during its preparation. This information forms part of the PTC declaration.",
+      "level_anchor": "The level describes the intensity of AI participation. It does not change the PTC’s cryptographic validity or the result of its verification. It is not a scale of quality or prestige.",
+      "level_help": {
+        "summary": "What does each level mean?",
+        "basic": {
+          "title": "Basic — limited assistance",
+          "text": "AI was used for specific, delimited tasks such as correction, translation, summarisation, consultation, reformulation or targeted technical support."
+        },
+        "standard": {
+          "title": "Standard — operator-led co-creation",
+          "text": "The process involved dialogue, iterations or joint construction. AI made a relevant contribution, while the operator directed the process, made the substantive decisions and assumed final responsibility."
+        },
+        "extended": {
+          "title": "Extended — intensive co-creation",
+          "text": "AI participation was sustained or complex and the process can be described in some detail: how it developed, which systems took part and which relevant decisions were made."
+        },
+        "other": {
+          "title": "Other — case not covered",
+          "text": "When you choose “Other”, a dedicated field appears so you can describe the case."
+        }
+      },
+      "optional": {
+        "summary": "DOI / ORCID (optional)",
+        "help": "For extended processes, DOI and ORCID are recommended when they exist because they help third parties follow the declared traceability."
+      },
+      "label2": "Describe the AI’s participation",
+      "ptc_value_hint": "This is the text that will appear in the PTC."
+    },
+    "step2": {
+      "label": "What do you want to document?",
+      "file_label": "Source document",
+      "formats": "Input formats: TXT · MD · DOCX · PDF — Output: PTC distribution package (ZIP)",
+      "warning": "For reproducible hashes use TXT. PDF/DOCX may vary between extractions.",
+      "disabled_hint": "Complete all required fields to enable file loading.",
+      "ptc_ready": "PTC generated",
+      "download_zip": "Download ZIP package",
+      "copy_ptc": "Copy PTC",
+      "copied": "PTC copied!",
+      "mode_file": "Document content",
+      "mode_reference": "Official document reference",
+      "ref_csv_label": "Secure Verification Code (CSV)",
+      "ref_url_label": "Access / verification link",
+      "ref_note": "The PTC links this reference to your declaration. The document is not uploaded or stored: it remains in its official repository.",
+      "ref_generate": "Generate PTC declaration",
+      "mode_json": "JSON · coming soon",
+      "file_desc": "Create a PTC declaration for the textual content of a file. The package will include the normalised canonical object and the pieces needed to verify it.",
+      "ref_desc": "Link a PTC declaration to an institutional document reference through its secure code and official URL. The document is not uploaded or stored: it remains in its official repository. The declaration records that the CSV and URL were associated at generation time.",
+      "ref_csv_help": "The alphanumeric code that appears at the foot of an electronically signed document. It allows verification of its authenticity at the electronic headquarters.",
+      "ref_url_help": "The web address where anyone can consult or verify the original document in its official repository.",
+      "file_formats": "TXT · MD · DOCX · PDF",
+      "drop_title": "Drag and drop the document here",
+      "drop_action": "or choose a file",
+      "drop_ready": "Document ready",
+      "drop_disabled": "Complete the declaration to enable this area.",
+      "protect_question": "What do you want to protect?",
+      "mode_exact_file": "Exact file",
+      "file_short_desc": "Protects the normalised text of the document. Some formatting changes may not produce a different identity.",
+      "file_content_warning": "This mode protects the obtained textual content, not necessarily the exact bytes of the original file.",
+      "exact_file_short_desc": "Will link the PTC to the exact bytes of the file, without interpreting its content.",
+      "exact_file_warning": "The file will be linked byte for byte. A signed PDF that is re-saved or printed again as a PDF will be a different file, even if it looks the same.",
+      "exact_file_dev_notice": "Exact-file selection is ready. Cryptographic generation will be added in the next unit.",
+      "exact_file_select": "Select file",
+      "exact_file_change": "Change file",
+      "ref_short_desc": "Protects an identifiable reference through its document data and a URL when applicable.",
+      "incompatible_warning": "This file is not compatible with \"Document content\" (supported formats: TXT, MD, DOCX, PDF). The file is kept; switch to \"Exact file\" or select another file.",
+      "disclosure_toggle": "Also prepare a public notice about AI use",
+      "disclosure_type_label": "Type of intervention",
+      "disclosure_type": {
+        "generated": "Generated with AI",
+        "modified": "Modified with AI",
+        "generated_or_modified": "Generated or modified with AI"
+      },
+      "disclosure_url_label": "Verification URL (optional)",
+      "disclosure_url_help": "Validator does not publish or host this address. Use a stable URL that you control or have reserved for the declaration.",
+      "disclosure_url_error": "The URL must start with https:// and contain no spaces.",
+      "disclosure_gate1": "I am going to publish or share this content",
+      "disclosure_gate2": "I want Validator to help me prepare the public notice",
+      "publication_eyebrow": "Optional step",
+      "publication_title": "Publication and public notice",
+      "publication_intro": "The PTC declaration can be generated without this section. Open it only if you are going to publish or share the content and want to prepare a public notice about AI use.",
+      "textual_notice_title": "Public notice unavailable in this mode",
+      "textual_notice_text": "Public-notice preparation is available in “Exact file” mode. You may change the mode using the selector above; the PTC declaration can still be generated in textual mode without this section."
+    },
+    "file": {
+      "select": "Select file",
+      "drop_hint": "Drag and drop a file here",
+      "card_title": "Selected file",
+      "name": "Received file name",
+      "size": "Size",
+      "mime": "MIME type reported by the browser",
+      "mode": "Selected mode",
+      "change": "Change file",
+      "remove": "Remove",
+      "announce_selected": "File selected: {name}. Size: {size}. MIME type reported by the browser: {mime}.",
+      "announce_selected_no_mime": "File selected: {name}. Size: {size}.",
+      "announce_removed": "File removed."
+    },
+    "action": "Generate PTC declaration",
+    "action_busy": "Processing…",
+    "status_ready": "File and declaration ready to generate.",
+    "status_processing": "Processing the file and generating the PTC declaration…",
+    "status_processing_reference": "Processing the reference and generating the PTC declaration…",
+    "error_processing": "The file could not be processed. The file and form data have been kept. You can try again, change the file, or remove it.",
+    "error_processing_reference": "The declaration could not be generated for this reference. The reference and form data have been kept. You can correct them or try again.",
+    "micro": {
+      "title": "What you just created",
+      "doc": "Cryptographically binds the declaration to the protected object",
+      "ptc": "Protects this transparency declaration",
+      "ethical": "Protects the declared conditions of creation",
+      "learn_more": "More about the protocol →"
+    },
+    "error": {
+      "complete_fields": "Complete all required fields before generating the declaration.",
+      "processing": "An error occurred while processing the file. Please try again.",
+      "edge_whitespace": "These fields have a leading or trailing space or tab and must be corrected before generating the PTC: ",
+      "forbidden_pipe": "The | character is not allowed in this field. Separate items with semicolons.",
+      "self_validation": "The generated declaration did not pass self-validation: ",
+      "qr_unavailable": "The QR code could not be generated. The package is generated anyway, without qr.svg."
+    },
+    "level_hints": {
+      "basic": "State the specific task or tasks performed by AI.",
+      "standard": "Briefly describe how the collaboration developed and which decisions were made by the operator.",
+      "extended": "Describe the relevant stages and how the process can be reconstructed or understood.",
+      "other": "Explain why the preceding levels do not adequately represent the case."
+    },
+    "preview": {
+      "txt": "📦 Original source · canonical TXT without PTC · canonical TXT with PTC · ptc.txt · manifest.json · README.txt",
+      "docx": "📦 Original DOCX source · canonical TXT without PTC · canonical TXT with PTC · derived DOCX representation with PTC when self-validation succeeds · ptc.txt · manifest.json · README.txt",
+      "pdf": "📦 Original PDF source · canonical TXT without PTC · canonical TXT with PTC · ptc.txt · manifest.json · README.txt. A PDF representation with PTC is not generated in this version.",
+      "zip": "⚠️ You selected an already generated package. To validate it, use the Validation page.",
+      "other": "Unsupported format. Use TXT, MD, DOCX or PDF.",
+      "ref": "📋 The reference (CSV + URL) will be documented. The package will include the canonical reference object, the artefact with PTC, ptc.txt, manifest.json and README.txt.",
+      "md": "📦 Original Markdown source · canonical TXT without PTC · canonical TXT with PTC · Markdown with PTC · ptc.txt · manifest.json · README.txt"
+    },
+    "readme_what": "Verifiable declaration of human-AI co-creation generated with Validator.",
+    "readme_verify": "How to verify: upload this ZIP to validator.es",
+    "title2": "Create a PTC declaration",
+    "stage0": {
+      "subtitle": "Select any file. You will then answer a few brief questions about AI involvement.",
+      "drop": "Drag a file here",
+      "privacy": "The file is only processed on this device.",
+      "reference_link": "Don't have the file? Create an official document reference",
+      "what_is_ptc": {
+        "summary": "What is a PTC declaration?",
+        "text": "A file that verifiably declares whether an AI system was involved in a document, a file, or a reference, and how. It is cryptographically linked to what it declares: if the file changes, the declaration no longer matches."
+      },
+      "privacy_info": {
+        "summary": "Privacy and local processing",
+        "text": "The file never leaves your device. All computation — reading, fingerprints, package generation — happens in your browser. Validator does not upload anything to any server."
+      },
+      "back": "Back"
+    },
+    "stageref": {
+      "title": "Reference an official document"
+    },
+    "stage_file": {
+      "exact_recommended": "Exact file — recommended",
+      "switch_textual": "Protect only the textual content",
+      "switch_exact": "Protect the exact file instead",
+      "questions_intro": "Just a few brief answers left. We'll ask who is making the declaration, which AI was involved, how it participated, whether there was human review, and what it was used for.",
+      "change_file": "← Change or select another file",
+      "exact_recommended_hint": "Recommended when you want to verify the complete file as it exists, including format and internal metadata.",
+      "textual_hint": "Use it when you want the declaration to remain bound to the text even if the layout or document format changes.",
+      "exact_recommended_short": "Exact file",
+      "recommended_badge": "Recommended",
+      "textual_short": "Textual content",
+      "textual_unavailable": "Not available for this format",
+      "textual_recommended_hint": "Protects the normalised text; formatting or layout changes may not alter the textual identity."
+    },
+    "eu": {
+      "toggle_question": "Do you want to include the European publication material corresponding to your declaration?",
+      "advanced": {
+        "summary": "Advanced options — correct the icon",
+        "select_label": "Icon to use",
+        "auto": "Automatic, based on the declaration"
+      },
+      "icon": {
+        "fully": "Fully AI-Generated",
+        "partially": "Partially AI-Modified"
+      },
+      "legal_note": "The icon is selected based on your declaration. Its inclusion does not determine that a legal obligation exists, does not certify compliance, and does not imply adherence to the Code of Practice."
+    },
+    "summary": {
+      "file": "File",
+      "mode": "Mode",
+      "ai_system": "AI system",
+      "human_review": "Human review",
+      "disclosure": "Public notice",
+      "disclosure_yes": "Yes",
+      "disclosure_no": "No"
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "intro": "Questions someone asks when discovering this tool for the first time.",
+    "q": {
+      "detect_vs_declare": {
+        "q": "What is the difference between detection and declaration?",
+        "a": "Detection tools try to identify whether a text was generated by AI without the author's knowledge or consent. This system starts from the opposite premise: someone who uses AI can choose to declare exactly how they did so, and that declaration can be cryptographically verified. Detection assumes adversarial intent. Declaration assumes voluntary accountability."
+      },
+      "lie_ptc": {
+        "q": "What stops someone from lying in a PTC?",
+        "a": "Nothing technical prevents it. What the system guarantees is that the lie is permanently and immutably documented. If someone declares 'full human review' and the document later circulates without that review, the PTC preserves the original declaration and that discrepancy is traceable. The system does not prevent fraud: it makes fraud visible and durable."
+      },
+      "ethical_hash": {
+        "q": "What does the ethical context hash add?",
+        "a": "The hash_ethical_context_sha256 hashes the declared creation conditions: who created the document, with which system, in which mode, for which purpose. If the document text stays unchanged but someone tries to retroactively claim different conditions (another system, another review level), the ethical hash will not match. The conditions of creation are as immutable as the content."
+      },
+      "modify_after": {
+        "q": "Can I modify the document after generating the PTC?",
+        "a": "Yes, but validation will fail. The document hash is calculated over the text at the moment of generation. Any subsequent change, however small, produces a different hash. If you modify the document, you need to generate a new PTC."
+      },
+      "context_not_text": {
+        "q": "What happens if I change the declared AI system but the text stays the same?",
+        "a": "The document hash will match (the text is identical), but the ethical context hash will not. That is why two complementary hashes exist. The system detects that the declared creation conditions have changed even if the content is the same."
+      },
+      "how_looks": {
+        "q": "What does the document look like with the PTC included?",
+        "a": "Validator preserves the source file separately and generates the canonical TXT artefact, consisting of the normalised textual object followed by the <PTC>…</PTC> block. When a reliable output adapter exists, it also generates a derived representation in the input format with the PTC incorporated."
+      },
+      "how_validate": {
+        "q": "How does someone else validate my declaration?",
+        "a": "You can upload the canonical TXT/MD artefact or the distribution package. The system extracts the final PTC block, reconstructs the canonical object and recalculates all three hashes. Normative artefact validation does not require the original source; the package may preserve it to check reproducibility of the transformation."
+      },
+      "local": {
+        "q": "What does local validation mean exactly?",
+        "a": "All processing happens in your browser. The document is not sent to any server. Hashes are computed on your machine. There is no record of what you validate or generate. You can use the tool offline once the page has loaded."
+      },
+      "txt_vs_pdf": {
+        "q": "Why TXT or MD rather than PDF or DOCX directly?",
+        "a": "TXT and Markdown are Unicode text and allow reproducible validation without a document-extraction step. PDF and DOCX require adapters that may produce different results across tools or versions. Validator accepts them as experimental formats, preserves the source and always provides canonical TXT as the normative reference."
+      },
+      "ley_ia_espana": {
+        "q": "What does Validator establish in relation to AI regulatory compliance?",
+        "a": "The Organic Law for the good use and governance of Artificial Intelligence, approved by the Council of Ministers on 26 May 2026 and pending parliamentary procedure, establishes the obligation to identify AI-generated content with a visible mark from 2 August 2026 onwards.\n\nThe PTC is not a visual mark — it is a verifiable declaration of the conditions under which AI participated in the creation of a document. It does not replace the formal labelling requirement the law imposes on content in social networks and platforms. It exceeds it in rigour, but in a different register.\n\nThe PTC is useful where minimum labelling is not enough: institutional documents, administrative communications, academic work, professional reports. Contexts where declaring is not just complying — it is being accountable. The law sets the floor. The PTC is for when the floor is not sufficient documentation.",
+        "a1": "Validator verifies document integrity and the technical conformance of a declaration with the PTC protocol. That evidence can support a transparency, audit or compliance process.",
+        "a2": "It does not by itself decide whether a specific case meets every obligation under the EU AI Act or another law. Article 50 applies to specific situations and actors and may also require visible notices, technical marking or other measures.",
+        "a3": "In Spain, Organic Bill 121/000096 remains before Parliament as of 21 July 2026. Validator should not be presented as a general legal certification, but as a verifiable tool for one specific part of the process: document traceability."
+      }
+    },
+    "package": {
+      "section": "The PTC distribution package",
+      "q1": "What is the PTC distribution package and what does it contain?",
+      "a1": "It is the delivery ZIP generated by Validator. It does not replace the canonical TXT artefact. It preserves the received source, the canonical object without PTC, the canonical artefact with PTC, the isolated PTC block, the manifest and the README. When an output adapter is available and passes self-validation, it also includes a derived representation in the input format.",
+      "q2": "What does the ZIP contain for each input format?",
+      "a2_intro": "The common structure is the same; derived representations depend on the input format:",
+      "q3": "What can I upload to the validator and what result will I get?",
+      "table": {
+        "input": "You upload",
+        "output": "Your distribution package contains",
+        "txt": "source/original.txt · canonical/document.txt · canonical/document_with_ptc.txt · ptc.txt · manifest.json · README.txt",
+        "md": "The above + representations/original_with_ptc.md",
+        "docx": "DOCX source + two canonical TXT files + derived DOCX representation when self-validation succeeds + auxiliary files",
+        "pdf": "PDF source + two canonical TXT files + auxiliary files. This version does not generate a PDF representation with PTC.",
+        "validate_input": "You upload to Validator",
+        "validate_result": "Result",
+        "v_zip": "Validates the canonical artefact and checks the coherence of available pieces.",
+        "v_txt": "Direct canonical artefact validation. Reproducible result.",
+        "v_md": "Direct textual validation; Markdown syntax is part of the content.",
+        "v_pdf": "Experimental. Extraction depends on the PDF adapter. For maximum reproducibility use the ZIP or canonical TXT.",
+        "v_docx": "Experimental. Validator reconstructs the PTC from final paragraphs; for maximum reproducibility use the ZIP or canonical TXT.",
+        "ref": "canonical/document.txt · canonical/document_with_ptc.txt · ptc.txt · manifest.json · README.txt (no documentary source)",
+        "v_ref": "Direct validation of the canonical reference."
+      }
+    }
+  },
+  "about": {
+    "title": "About validator.es",
+    "lead": "When AI participates in the creation of a document, the conditions of that participation are invisible, unverifiable, and therefore unaccountable. Validator.es exists to change that.",
+    "problem_title": "The problem",
+    "problem": "AI-assisted documents have become indistinguishable on the surface from fully human-authored ones. Detection tools respond by attempting to identify traces of the generative process. But detection assumes adversarial intent and fails systematically against honest, supervised use. Verifiable declaration is a different answer: whoever uses AI declares exactly how they did so, and that declaration is cryptographically anchored to the document.",
+    "approach_title": "The approach",
+    "approach": "The Canal Transparency Protocol (PTC) defines a declaration and verification standard for human–AI co-creation. It does not assess quality or decide whether AI use is appropriate. It records what happened, under what conditions, with what level of human supervision and for what purpose. Three complementary hashes make separate changes to the content, declaration or declared conditions detectable.",
+    "origin_title": "The origin",
+    "origin": "Validator.es is part of the ACS — El Canal ecosystem, a documentary corpus on human-AI co-creation built since 2023 and published openly with persistent identifiers. The tool implements the PTC corpus (R-01 v1.1 / PTC-F v1.2 / ARCH v0.3), whose conceptual predecessor is ACS-6. It was developed by Manuel Barrera Anglada (ORCID: 0009-0000-8891-7021), civil servant and president of the Association for Transparency for Citizens, as a practical application of a three-year methodological corpus.",
+    "ecosystem_title": "The ecosystem",
+    "ecosystem": "The corpus is published on Zenodo under CC BY 4.0 and indexed in OpenAIRE. The full conceptual framework — ACS, LEA, CAP, PTC — is accessible at elcanal.es.",
+    "ptc_own_title": "This site's traceability declaration",
+    "ptc_own_intro": "This site was built under the same principles it documents. What follows is the PTC block of its own construction.",
+    "law_title": "In the 2026 regulatory context",
+    "law": "From 2 August 2026, certain transparency obligations under the EU AI Act apply. In Spain, Organic Bill 121/000096 remains before Parliament as of 21 July 2026 and is not yet law.\n\nValidator does not replace visible notices, technical marking or other applicable obligations. It adds a distinct, complementary layer: a verifiable declaration of how AI participated, what human review occurred and which exact document version the declaration refers to.",
+    "portable_link": "Local distribution",
+    "contact_title": "Contact",
+    "contact_text": "Questions, technical issues, interoperability results and implementation proposals:"
+  },
+  "acs6": {
+    "title": "ACS-6 Protocol",
+    "intro": "ACS-6 is a transparency framework designed to help people clearly declare how artificial intelligence was used in the creation of a document. It does not detect AI usage. It does not judge content. It simply makes declarations verifiable.",
+    "why": {
+      "title": "Why transparency matters",
+      "text": "As AI tools become part of everyday writing, it becomes harder to distinguish between human authorship and AI assistance. ACS-6 provides a simple way to openly declare this collaboration without fear, punishment, or technical barriers."
+    },
+    "does": {
+      "title": "What ACS-6 does",
+      "item1": "Allows authors to declare how AI was used",
+      "item2": "Links that declaration to a specific document",
+      "item3": "Makes the declaration formally verifiable",
+      "item4": "Works without detection or surveillance"
+    },
+    "not": {
+      "title": "What ACS-6 does not do",
+      "item1": "It does not detect AI-generated content",
+      "item2": "It does not evaluate quality or originality",
+      "item3": "It does not judge intent or ethics",
+      "item4": "It does not store documents or personal data"
+    },
+    "for": {
+      "title": "Who ACS-6 is for",
+      "text": "ACS-6 can be used by individuals, educators, researchers, institutions, and anyone who wants to communicate transparently about AI usage in documents."
+    },
+    "closing": "Transparency is not about proving innocence. It is about making authorship understandable.",
+    "specs_link": "The protocol technical specifications →",
+    "context": "ACS-6 is the conceptual standard that gave rise to the Canalista Transparency Protocol (PTC). The implementable technical specifications are R-01 (canonical text), PTC-F (PTC block fields) and the Normative Architecture."
+  },
+  "footer": {
+    "ecosystem": "Part of the ACS ecosystem —",
+    "ecosystem_link": "El Canal",
+    "doi_label": "PTC protocol DOI",
+    "orcid_label": "ORCID",
+    "privacy": "No cookies. No trackers. All processing is local in your browser.",
+    "portable": "Local distribution · Zenodo",
+    "contact_label": "Contact",
+    "contact_value": "contacto@validator.es",
+    "protocol": "Protocol",
+    "help": "Help",
+    "regulation": "Regulation",
+    "why": "Why it exists",
+    "about": "About",
+    "acs6": "ACS-6 background"
+  },
+  "portable": {
+    "title": "Local distribution",
+    "subtitle": "Use validator.es offline, on an intranet, local server or USB drive.",
+    "when_title": "When to use the portable version?",
+    "when_intro": "The online version of validator.es covers most cases. The portable version is the right choice when:",
+    "when_items": [
+      "Documents cannot leave an internal or corporate network",
+      "The administrative environment does not allow access to external services",
+      "Operation without internet connection is required",
+      "It will be deployed on multiple devices within an organisation",
+      "An audit or training session in a controlled environment is needed",
+      "Privacy policy requires that data never leaves the device"
+    ],
+    "what_title": "What it is",
+    "what": "The portable version is a complete, self-contained copy of validator.es. It includes all libraries, fonts and resources needed. No installation, server or internet connection required once downloaded.",
+    "how_title": "How to use it",
+    "how_steps": [
+      "Download the ZIP from Zenodo",
+      "Extract to any folder",
+      "Open index.html in any modern browser"
+    ],
+    "how_note": "Nothing else needed. No server. No dependencies. Any operating system.",
+    "contains_title": "What it contains",
+    "contains_items": [
+      "All site pages (HTML)",
+      "Complete design system (CSS + local fonts)",
+      "Processing libraries: pdf.js, mammoth, jszip",
+      "Translations in Spanish, English and French",
+      "README with traceability declaration (PTC)"
+    ],
+    "integrity_title": "Verification and integrity",
+    "integrity": "The included README contains its own PTC block and can verify only the README. It does not by itself certify the bytes of the complete ZIP.",
+    "integrity_warning": "Always download from the official DOI on Zenodo. The external publication record provides provenance for the distributed copy.",
+    "download_title": "Download from Zenodo",
+    "download_btn": "Open record on Zenodo",
+    "download_doi": "Publication record on Zenodo",
+    "download_note": "Zenodo maintains the version history and displays the DOI specific to each publication.",
+    "versions_title": "Version history",
+    "principle": "If documents should not leave the user's environment, the tool should not necessarily depend on an external server either.",
+    "principle_label": "Operational sovereignty principle",
+    "table_version": "Version",
+    "table_date": "Date",
+    "table_protocol": "Protocol",
+    "table_status": "Status",
+    "status_current": "Current",
+    "status_previous": "Previous"
+  },
+  "regulation": {
+    "title": "Document transparency and AI regulation",
+    "intro": "From 2 August 2026, the EU AI Act applies generally, including certain transparency obligations. Validator provides a verifiable document-traceability layer that can support transparency, audit and compliance processes.",
+    "s1": {
+      "label": "What the current framework provides",
+      "eu": "Article 50 of the EU AI Act sets transparency obligations for certain providers and deployers. They include technically detectable marking of certain synthetic outputs, informing people when they interact with certain systems, and disclosure of deepfakes and certain AI-generated or manipulated text published to inform the public on matters of public interest, subject to the exceptions in the Regulation. These obligations apply from 2 August 2026.",
+      "es": "Spain is processing Organic Bill 121/000096 on the proper use and governance of artificial intelligence, introduced on 28 May 2026. As of 21 July 2026 it remains before Parliament and the amendment deadline has been extended to 2 September 2026. It is not yet law.",
+      "core": "The regulatory framework does not prescribe one technical solution for every document. It does make it increasingly important to explain and document, proportionately, when and how AI was involved and under whose responsibility."
+    },
+    "s2": {
+      "label": "The document problem",
+      "p1": "A visible notice or mark can state that AI-generated or manipulated content is present. It does not always document how the system participated, what human review occurred, who assumed responsibility, or which exact document version the declaration referred to.",
+      "p2": "Institutional documents, academic publications, professional reports and administrative communications may need an additional layer: a verifiable declaration bound to a specific version and auditable with open tools."
+    },
+    "s3": {
+      "label": "What a verifiable declaration adds",
+      "p1": "A PTC declaration records the stated conditions of AI participation: operator, system, co-creation mode, human review, purpose and other contextual data. It then cryptographically binds that declaration to the document object.",
+      "p2": "If the linked content, the declaration or its contextual conditions change, verification detects the divergence. The current profile’s three hashes protect distinct scopes: document object, PTC block and declared ethical context."
+    },
+    "s4": {
+      "label": "Validator’s specific function",
+      "p1": "Validator creates and verifies PTC declarations and checks their technical conformance with the current normative corpus. It can show that the declaration corresponds to the declared document object and that all three hashes are coherent.",
+      "p2": "All processing runs locally in the browser. Documents are not sent to a server, no account is required, and a portable version is available for offline environments and internal networks.",
+      "generate": "Create PTC",
+      "validate": "Verify"
+    },
+    "s5": {
+      "label": "Scope and limits",
+      "integrity": "Validator covers a specific function within a compliance process: verifiable document traceability. It can complement transparency, labelling, technical marking, supervision or archiving duties; it does not automatically replace them.",
+      "p1": "Validator does not by itself determine the material truth of a declaration, scientific quality, the operator’s good faith or full legal compliance in a specific case. Nor does it replace obligations applying to providers, deployers, editors or platforms.",
+      "p2": "Its result does support a precise statement: the artifact technically conforms to the PTC protocol and the preserved declaration corresponds to the verified document object. That evidence can be integrated into internal policies, audits, publications and transparency procedures.",
+      "timeline": "PTC originated as an open document-traceability protocol. Its regulatory usefulness is complementary: it documents a dimension that a visible label alone may not preserve."
+    },
+    "sources": {
+      "sources_label": "Official sources",
+      "source_eu": "Regulation (EU) 2024/1689 — official text",
+      "source_es": "Spanish Congress — Bill 121/000096"
+    }
+  },
+  "why": {
+    "title": "Why Validator exists",
+    "subtitle": "We did not design these projects to demonstrate a tool. When reviewing the work done, we found something unexpected: very different contexts kept needing the same mechanism.",
+    "pattern": "The question that appeared in each case was always a variant of the same one:",
+    "question": "How do we make something verifiable that normally depends on trust?",
+    "convergence": "The contexts were different. The question was the same.",
+    "case1": {
+      "label": "Research",
+      "title": "Documenting how a result was built",
+      "text": "In work on psychosocial risks of AI-assisted cognitive work, a concrete methodological question arose: if analysis is produced in collaboration between a researcher and an AI system, how is that process documented in a way that is verifiable and does not depend solely on the author's declaration?",
+      "need": "The need was not technical. It was epistemological: ensuring that what was declared about the process of knowledge production could not be modified retroactively.",
+      "link": "The Silent Transformation: Psychosocial Risk Patterns in AI-Assisted Cognitive Work →"
+    },
+    "case2": {
+      "label": "Public administration",
+      "title": "Documenting what information was actually received",
+      "text": "In monitoring public information access through the Provincial Transparency Observatory of Seville — covering all 106 municipalities in the province — the same friction appeared: records of what was requested and responded exist, but are not independently verifiable.",
+      "need": "The need was for audit: an external, immutable record of what occurred, not dependent on the system that holds the original data.",
+      "link": "First Consultation of the Provincial Transparency Observatory (Seville) →"
+    },
+    "case3": {
+      "label": "Essay / Reflective work",
+      "title": "Documenting the traceability of a creative process",
+      "text": "La Catedral Invisible emerges from a sustained conversation over months between a human operator and different AI systems. The question that appeared: how is that distinction documented in a way that does not depend solely on the author's good faith?",
+      "need": "The need was about authorship: being able to demonstrate the nature of the creative process without having to reconstruct it after the fact.",
+      "link": "La Catedral Invisible — A manual for not arriving late to the next revolution →"
+    },
+    "closing": "Validator was not born for any of these contexts in particular. It was born from observing that the same problem appeared in all of them.",
+    "integrity": "Validator verifies document integrity and technical conformance with the PTC protocol. It does not replace legal, scientific or material assessment of the content."
+  },
+  "specs": {
+    "title": "Protocol specifications",
+    "subtitle": "The normative corpus of the Canalista Transparency Protocol (PTC) consists of three documents with distinct functions. No document assumes more than one normative function.",
+    "map_title": "Document relationships",
+    "download": "Download",
+    "doi_label": "DOI",
+    "doi_pending": "processing",
+    "status_published": "Published",
+    "status_working": "Working document",
+    "function_label": "Function",
+    "owner_label": "Normative owner of",
+    "r01_title": "Canonical Text Specification for the Canal Transparency Protocol (PTC)",
+    "r01_id": "R-01  ·  v 1.1",
+    "r01_function": "Specification",
+    "r01_desc": "Defines the canonical object: text normalisation rules, calculation of the three cryptographic hashes, and the PTC block extraction algorithm. It is the technical foundation that allows two independent implementations to produce the same result.",
+    "r01_owns": "Text normalisation · Hash calculation · Extraction algorithm",
+    "ptcf_title": "Functional Specification of the Canal Transparency Protocol (PTC)",
+    "ptcf_id": "PTC-F  ·  v 1.2",
+    "ptcf_function": "Specification",
+    "ptcf_desc": "Defines the PTC block fields: names, normative order, valid values and the semantics the operator commits to when using each value. Distinguishes between syntactic conformance and truthfulness of the declaration.",
+    "ptcf_owns": "PTC block fields · Value semantics · Declarative commitments",
+    "arch_title": "Normative Architecture of the Canal Transparency Protocol (PTC)",
+    "arch_id": "ARCH  ·  v 0.3",
+    "arch_function": "Architecture",
+    "arch_desc": "Defines how the specifications relate to each other: corpus governance, normative owner table, operating modes, adapter architecture and the conformant reference implementation.",
+    "arch_owns": "Document relationships · Adapters · Operating modes",
+    "impl_title": "Conformant reference implementation",
+    "impl_desc": "validator.es is the conformant reference implementation of the PTC protocol. It is not the protocol: it implements it. A third party can build another conformant implementation by reading only R-01, PTC-F and ARCH.",
+    "faq_title": "Questions for implementers",
+    "faq_q1": "What do I need to read to implement the protocol?",
+    "faq_a1": "The three corpus documents: R-01 (normalisation and hashes), PTC-F (fields and semantics) and the Normative Architecture (relationships and adapters). That is the recommended reading order.",
+    "faq_q2": "How do I verify my implementation is conformant?",
+    "faq_a2": "Run the conformance cases defined in R-01 and PTC-F and also check the architectural requirements in ARCH. The cases are necessary, but conformance requires respecting the entire current corpus.",
+    "faq_q3": "What does version: R-01 mean in a PTC block?",
+    "faq_a3": "It indicates the artefact was generated under the current R-01 v1.1 / PTC-F v1.2 profile. Artefacts with version: 6 were generated under ACS-6, the earlier founding generation, and are not validated by this implementation.",
+    "faq_q4": "Can I implement the protocol in any programming language?",
+    "faq_a4": "Yes. The protocol specifies behaviour, not implementation. You need: a SHA-256 function, UTF-8 text handling and the normalisation rules from R-01. The reference implementation uses pure JavaScript with Web Crypto API, but any modern language is valid.",
+    "faq_q5": "Where do I report inconsistencies in the specifications?",
+    "faq_a5": "The specifications are versioned documents. Inconsistencies, interoperability results and implementation proposals can be sent to contacto@validator.es.",
+    "downloads_title": "Complete corpus downloads",
+    "downloads_text": "Distribution copies for reading and archiving:"
+  }
+}

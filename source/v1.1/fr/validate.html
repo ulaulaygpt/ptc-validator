@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<link href="../favicon.ico" rel="icon" sizes="any"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../site.webmanifest" rel="manifest"/>
+<link href="https://validator.es/fr/validate.html" rel="canonical"/><link href="https://validator.es/validate.html" hreflang="es" rel="alternate"/><link href="https://validator.es/en/validate.html" hreflang="en" rel="alternate"/><link href="https://validator.es/fr/validate.html" hreflang="fr" rel="alternate"/><link href="https://validator.es/validate.html" hreflang="x-default" rel="alternate"/>
+<meta content="Manuel Barrera Anglada (ORCID: 0009-0000-8891-7021)" name="author"/>
+<meta content="vérifier paquet PTC, intégrité fichier exact, vérification fichier source, structure du paquet, traçabilité IA locale" name="keywords"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<title>Vérifier une déclaration PTC — validator.es</title>
+<meta content="Vérifiez les paquets PTC et les fichiers compatibles. Contrôlez la déclaration, l’objet protégé, l’intégrité du fichier source et la structure du paquet, entièrement en local." name="description"/>
+<meta content="Vérifier une déclaration PTC — validator.es" property="og:title"/>
+<meta content="Vérifiez les paquets PTC et les fichiers compatibles. Contrôlez la déclaration, l’objet protégé, l’intégrité du fichier source et la structure du paquet, entièrement en local." property="og:description"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Vérifier une déclaration PTC — validator.es" name="twitter:title"/>
+<meta content="Vérifiez les paquets PTC et les fichiers compatibles. Contrôlez la déclaration, l’objet protégé, l’intégrité du fichier source et la structure du paquet, entièrement en local." name="twitter:description"/>
+<meta content="https://validator.es/fr/validate.html" property="og:url"/>
+<link href="../assets/css/fonts.css" rel="stylesheet"/>
+<link href="../assets/css/main.css" rel="stylesheet"/>
+<script src="../assets/libs/pdf.min.js"></script>
+<script src="../assets/libs/mammoth.browser.min.js"></script>
+<meta content="https://validator.es/icon-512.png" property="og:image"/>
+</head>
+<body>
+<header>
+<nav><a class="logo" href="index.html">△ validator.es</a><ul class="nav-links"><li><a data-i18n="nav.generate" href="generate.html">Créer un PTC</a></li><li><a class="active" data-i18n="nav.validate" href="validate.html">Vérifier</a></li><li><a data-i18n="nav.specs" href="specs.html">Protocole</a></li><li><a data-i18n="nav.faq" href="faq.html">Aide</a></li></ul><div class="lang-selector"><button class="lang-btn" data-lang="es">ES</button><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="fr">FR</button></div></nav>
+</header>
+<main>
+<h1 data-i18n="validate.title">Vérifier une déclaration PTC</h1>
+<p class="intro-text" data-i18n="validate.intro2">Glissez ici le paquet ou le fichier.</p>
+<div class="file-input-wrapper"><label class="drop-zone" data-input-id="file-input" for="file-input" role="button" tabindex="0"><input accept=".txt,.md,.pdf,.docx,.zip" id="file-input" type="file"/><span aria-hidden="true" class="drop-zone-icon">⇩</span><span class="drop-zone-title" data-i18n="validate.drop_title">Glissez-déposez le fichier ici</span><span class="drop-zone-action" data-i18n="validate.drop_action">ou choisissez un fichier</span><span class="drop-zone-file" data-ready-fallback="Fichier prêt" data-ready-key="validate.drop_ready"></span></label><p class="privacy-hint" data-i18n="validate.privacy_hint">La vérification s’effectue localement sur cet appareil. Le fichier n’est envoyé à aucun serveur.</p><div id="validate-file-hint" style="display:none;"></div><details class="optional-section" style="margin-top:.75rem;"><summary data-i18n="validate.formats_summary">Formats pris en charge</summary><p class="helper-text" data-i18n="validate.formats">Paquet de distribution PTC · Artefact TXT/MD · Document compatible (PDF/DOCX)</p><p class="warning-text" data-i18n="validate.warning">ZIP : valide l’artefact canonique et vérifie la cohérence des pièces disponibles. TXT/MD : validation textuelle reproductible. PDF/DOCX : extraction expérimentale.</p></details></div>
+<div class="idle-message" data-i18n="validate.idle" id="idle-message">Sélectionnez un document pour commencer la validation.</div>
+<div class="processing-message" role="status" aria-live="polite" data-i18n="validate.processing" id="processing-message" style="display:none;">Validation en cours…</div>
+<!-- BETA-01: banner de detección de formato -->
+<div id="format-detected-banner" style="display:none;margin-bottom:1rem;padding:.6rem .9rem;border-radius:6px;background:var(--surface-alt);border:1px solid var(--border);font-size:.85rem;color:var(--ink-muted);"></div>
+<!-- BETA-02: ZIP ordinario, sin paquete PTC reconocido -->
+<div id="ordinary-zip-message" style="display:none;padding:1.25rem;background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-lg);text-align:center;">
+<p data-i18n="validate.ordinary_zip.text" style="margin-bottom:1rem;">Ce ZIP ne contient pas de paquet PTC reconnu.</p>
+<a class="btn" data-i18n="validate.ordinary_zip.cta" href="generate.html">Créer une déclaration pour ce fichier</a>
+</div>
+<section id="package2-report" style="display:none;" tabindex="-1">
+<div class="step-container">
+<div class="step-label" data-i18n="validate.pkg2.axis_ptc">Déclaration PTC</div>
+<div id="pkg2-axis-ptc"></div>
+</div>
+<div class="step-container" style="margin-top:1rem;">
+<div class="step-label" data-i18n="validate.pkg2.axis_source">Fichier source</div>
+<div id="pkg2-axis-source"></div>
+</div>
+<div class="step-container" style="margin-top:1rem;">
+<div class="step-label" data-i18n="validate.pkg2.axis_package">Structure du paquet</div>
+<div id="pkg2-axis-package"></div>
+</div>
+<div class="step-container" id="pkg2-axis-disclosure-container" style="display:none;margin-top:1rem;">
+<div class="step-label" data-i18n="validate.pkg2.axis_disclosure">Avis public</div>
+<div id="pkg2-axis-disclosure"></div>
+</div>
+<p data-i18n="validate.pkg2.disclosure_omitted" id="pkg2-disclosure-omitted" style="display:none;font-size:.85rem;color:var(--ink-muted);margin-top:.5rem;">Sans avis public</p>
+<p id="pkg2-channel-incident" style="display:none;font-size:.8rem;color:var(--ink-muted);margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--border);"></p>
+<details class="optional-section" style="margin-top:1rem;">
+<summary data-i18n="validate.report.details.title">Voir tous les champs du PTC</summary>
+<div class="helper-text" id="pkg2-details-block" style="font-family:var(--font-mono);font-size:.8rem;white-space:pre-wrap;"></div>
+</details>
+</section>
+<section id="validation-report" style="display:none;" tabindex="-1">
+<!-- Preflight -->
+<div class="step-container">
+<div class="step-label" data-i18n="validate.report.preflight.title">Vérification préalable</div>
+<div class="preflight-rows" id="preflight-rows"></div>
+</div>
+<!-- Semaphore result: el resumen comprensible, siempre visible -->
+<div class="step-container" style="margin-top:1rem;">
+<div class="step-label" data-i18n="validate.report.result.title">Résultat</div>
+<div class="semaphore" id="semaphore-box" style="margin-top:.75rem;">
+<div class="semaphore-dot"></div>
+<div>
+<div class="semaphore-label" id="semaphore-label">—</div>
+<div class="semaphore-sub" id="semaphore-sub">—</div>
+<div class="semaphore-explanation" id="semaphore-explanation" style="font-size:.83rem;color:var(--ink-muted);margin-top:.35rem;"></div>
+</div>
+</div>
+<div class="check-rows" id="check-rows"></div>
+<div id="error-warning-block"></div>
+</div>
+</section>
+<p id="result-limit-note" data-i18n="validate.result_limit" style="display:none;margin-top:1rem;padding:.6rem .9rem;background:var(--surface-alt);border:1px solid var(--border);border-radius:6px;font-size:.83rem;color:var(--ink-muted);">Résultat technique. Il ne certifie pas la véracité du contenu et ne remplace pas une évaluation juridique ou d’expertise.</p>
+<details class="optional-section" id="validation-details" style="margin-top:1rem;display:none;">
+<summary data-i18n="validate.report.details.title">Voir les détails techniques</summary>
+<div id="package-schema" style="display:none;margin:.75rem 0;"></div>
+<div class="check-rows" id="hash-values-detail" style="margin-bottom:1rem;"></div>
+<div class="micro-pedagogy">
+<div class="micro-pedagogy-title" data-i18n="validate.micro.title">Ce que garantit chaque hachage</div>
+<div class="micro-pedagogy-rows">
+<div class="micro-row">
+<span class="micro-row-key">hash_doc_sha256</span>
+<span class="micro-row-val" data-i18n="validate.micro.doc">Protège l’objet canonique lié à la déclaration</span>
+</div>
+<div class="micro-row">
+<span class="micro-row-key">hash_ptc_sha256</span>
+<span class="micro-row-val" data-i18n="validate.micro.ptc">Protège la déclaration de transparence</span>
+</div>
+<div class="micro-row">
+<span class="micro-row-key">hash_ethical_context_sha256</span>
+<span class="micro-row-val" data-i18n="validate.micro.ethical">Protège les conditions de création déclarées</span>
+</div>
+</div>
+</div>
+<div class="helper-text" id="details-block" style="font-family:var(--font-mono);font-size:.8rem;white-space:pre-wrap;margin-top:1rem;"></div>
+</details>
+</main>
+<footer><div class="footer-inner"><p class="footer-ecosystem"><span data-i18n="footer.ecosystem">Partie de l'écosystème ACS —</span> <a data-i18n="footer.ecosystem_link" href="https://elcanal.es" rel="noopener" target="_blank">El Canal</a></p><div class="footer-meta footer-links"><a data-i18n="footer.protocol" href="specs.html">Protocole</a> · <a data-i18n="footer.regulation" href="regulation.html">Réglementation</a> · <a data-i18n="footer.why" href="why.html">Pourquoi il existe</a> · <a data-i18n="footer.help" href="faq.html">Aide</a> · <a data-i18n="footer.about" href="about.html">À propos</a> · <a data-i18n="footer.portable" href="portable.html">Distribution locale · Zenodo</a> · <a data-i18n="footer.acs6" href="acs6.html">Historique ACS-6</a> · <a href="https://orcid.org/0009-0000-8891-7021" rel="noopener" target="_blank">ORCID 0009-0000-8891-7021</a> · <a href="mailto:contacto@validator.es">contacto@validator.es</a></div><p class="footer-legal" data-i18n="footer.privacy">Sans cookies. Sans traceurs. Tout le traitement est local dans votre navigateur.</p></div></footer>
+<script>
+    if (window.pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'assets/libs/pdf.worker.min.js';
+    }
+  </script>
+<script src="../assets/i18n/es.js"></script>
+<script src="../assets/i18n/en.js"></script>
+<script src="../assets/i18n/fr.js"></script>
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/libs/jszip.min.js"></script>
+<script src="../assets/js/ptc-core.js"></script>
+<script src="../assets/js/ptc-adapters.js"></script>
+<script src="../assets/js/ptc-frs.js"></script>
+<script src="../assets/js/validate-pkg2.js"></script>
+<script src="../assets/js/dropzone.js"></script><script src="../assets/js/validate.js"></script>
+</body>
+</html>

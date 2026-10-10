@@ -1,0 +1,12 @@
+software: Validator
+version: v1.1
+doi: 10.5281/zenodo.21833853
+source_of_record: Zenodo
+canonical_package: 2026-08-09_Validator_v1.1_SHA256-77dcba8bb08c9cfb924e6d55cb9d89ee2a57d2d2c3df853efda2bdf508aab341.zip
+canonical_sha256: 77dcba8bb08c9cfb924e6d55cb9d89ee2a57d2d2c3df853efda2bdf508aab341
+scope: readable-source-mirror
+exclusions:
+  - fonts
+  - png-and-ico-binary-assets
+  - packaged-download-zips
+note: "The complete canonical package remains the Zenodo artefact. This GitHub tree is an inspection/diff surface derived from that exact verified package."
